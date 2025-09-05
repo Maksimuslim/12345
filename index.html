@@ -218,7 +218,7 @@
             background: linear-gradient(135deg, #3A9DBF);
             color: white;
             padding: 4px 10px;
-            border-radius: 15px;
+            край: 15px;
             white-space: nowrap;
             display: inline-block;
             font-weight: 700;
@@ -331,7 +331,7 @@
             z-index: 998;
             padding: 20px 40px;
             background: var(--secondary);
-            color: var(--dark);
+            край: var(--dark);
             border-radius: 50px;
             text-decoration: none;
             font-weight: bold;
@@ -466,7 +466,7 @@
             bottom: 0;
             left: 0;
             width: 40px;
-            height: 3px;
+            край: 3px;
             background: var(--secondary);
         }
 
@@ -724,7 +724,7 @@
         }
         
         .modal {
-            background: white;
+            край: white;
             padding: 40px;
             border-radius: 15px;
             width: 90%;
@@ -859,41 +859,41 @@
 
         /* Блок с акциями */
         .promo-section {
-            padding: 25px 0;
+            padding: 40px 0;
             background: var(--light);
         }
 
         .promo-section .section-title h2 {
-            font-size: 1.3rem;
-            margin-bottom: 15px;
-            font-weight: 500;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            font-weight: 600;
         }
 
         .promo-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 15px;
-            margin-top: 15px;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
         }
 
         .promo-card {
             background: white;
-            border-radius: 15px;
-            padding: 15px;
+            border-radius: 16px;
+            padding: 30px;
             box-shadow: var(--shadow);
             transition: var(--transition);
             position: relative;
             overflow: hidden;
-            border: 2px solid var(--secondary);
-            min-height: 220px;
+            border: 3px solid var(--secondary);
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
+            align-items: center;
+            text-align: center;
         }
 
         .promo-card:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
         }
 
         .promo-card::before {
@@ -902,50 +902,53 @@
             top: 0;
             left: 0;
             right: 0;
-            height: 3px;
+            height: 5px;
             background: var(--secondary);
         }
 
         .promo-card h3 {
             color: var(--primary);
-            font-size: 1.1rem;
-            margin-bottom: 8px;
-            text-align: center;
-            line-height: 1.2;
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            line-height: 1.3;
         }
 
         .promo-card p {
             color: var(--text);
-            line-height: 1.4;
-            margin-bottom: 12px;
-            text-align: center;
-            font-size: 0.9rem;
-            flex-grow: 1;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            font-size: 1.1rem;
         }
 
         .promo-card .promo-price {
             display: block;
-            text-align: center;
-            font-size: 1.3rem;
+            font-size: 1.5rem;
             font-weight: bold;
             color: var(--primary);
-            margin: 8px 0;
+            margin: 15px 0;
         }
 
         .promo-card .btn {
             width: 100%;
-            margin-top: 8px;
-            padding: 10px 15px;
-            font-size: 13px;
-            border-radius: 25px;
+            margin-top: 15px;
+            padding: 14px 25px;
+            font-size: 16px;
+            border-radius: 30px;
         }
         
         .promo-image {
-            width: 60px;
-            height: 60px;
-            margin: 10px auto;
+            width: 120px;
+            height: 120px;
+            margin: 20px auto;
             display: block;
             object-fit: contain;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .promo-card:hover .promo-image {
+            transform: scale(1.1);
         }
 
         /* Загрузчик */
@@ -1212,8 +1215,29 @@
                 padding: 25px;
             }
             
+            /* Адаптация промо-карточек для мобильных */
             .promo-grid {
                 grid-template-columns: 1fr;
+                gap: 25px;
+            }
+            
+            .promo-card {
+                padding: 25px 20px;
+                min-height: auto;
+            }
+            
+            .promo-card h3 {
+                font-size: 1.3rem;
+            }
+            
+            .promo-card p {
+                font-size: 1rem;
+            }
+            
+            .promo-image {
+                width: 100px;
+                height: 100px;
+                margin: 15px auto;
             }
             
             .floating-btn {
@@ -1282,6 +1306,11 @@
                 height: 180px;
             }
             
+            .promo-image {
+                width: 80px;
+                height: 80px;
+            }
+            
             .floating-btn {
                 left: 10px;
                 bottom: 10px;
@@ -1291,6 +1320,14 @@
             
             .section-title h2 {
                 font-size: 1.8rem;
+            }
+            
+            .promo-card {
+                padding: 20px 15px;
+            }
+            
+            .promo-card h3 {
+                font-size: 1.2rem;
             }
         }
 
@@ -1302,6 +1339,12 @@
             
             .mobile-menu {
                 display: none;
+            }
+            
+            /* Увеличение фото в акциях для ПК */
+            .promo-image {
+                width: 140px;
+                height: 140px;
             }
         }
     </style>
@@ -1366,29 +1409,42 @@
     <!-- Блок с акциями -->
     <section class="promo-section">
         <div class="container">
+            <div class="section-title">
+                <h2>Специальные предложения</h2>
+                <p class="section-descr">Только сейчас уникальные акции для наших клиентов</p>
+            </div>
+            
             <div class="promo-grid">
                 <div class="promo-card">
                     <h3>Подарок на выбор</h3>
                     <p>При заключении договора выберите в подарок потолочную, настенную или напольную сушилку.</p>
-                    <img src="images/tempsnip.png" alt="Balkonomania" class="promo-image">
+                    <img src="images/tempsnip.png" alt="Подарок на выбор" class="promo-image">
+                    <span class="promo-price">Бесплатно!</span>
+                    <button class="btn">Получить подарок</button>
                 </div>
                 
                 <div class="promo-card">
                     <h3>Подарок каждому клиенту</h3>
                     <p>При заказе комплексной обшивки балкона (лоджии) шкафчик до подоконника из ДСП в подарок!</p>
-                    <img src="images/1.jpg" alt="Balkonomania" class="promo-image">
+                    <img src="images/1.jpg" alt="Шкафчик в подарок" class="promo-image">
+                    <span class="promo-price">Бесплатно!</span>
+                    <button class="btn">Заказать обшивку</button>
                 </div>
                 
                 <div class="promo-card">
                     <h3>Приятный бонус!</h3>
                     <p>Получите сертификат в строительный гипермаркет на 3% от суммы договора при заключении договора в день замера.</p>
-                    <img src="images/tempsnip2.png" alt="Balkonomania" class="promo-image">
+                    <img src="images/tempsnip2.png" alt="Сертификат в подарок" class="promo-image">
+                    <span class="promo-price">+3% к сумме</span>
+                    <button class="btn">Получить сертификат</button>
                 </div>
                 
                 <div class="promo-card">
                     <h3>Тепло и защита со скидкой 50%!</h3>
                     <p>Обшиваете балкон? Получите ИК тёплый пол и сетки от комаров за полцены!</p>
-                    <img src="images/tempsnip1.png" alt="Balkonomania" class="promo-image">
+                    <img src="images/tempsnip1.png" alt="Теплый пол и сетки" class="promo-image">
+                    <span class="promo-price">-50%</span>
+                    <button class="btn">Воспользоваться акцией</button>
                 </div>
             </div>
         </div>
@@ -1408,7 +1464,7 @@
         <div class="container">
             <div class="section-title">
                 <h2>Почему выбирают нас</h2>
-                <p class="section-descr">Более 10 лет создаём уют и комфорт в ваших дома</p>
+                <p class="section-descr">Более 10 лет создаём уют и комфорт в ваших домах</p>
             </div>
             
             <div class="advantages-grid">
@@ -1445,7 +1501,7 @@
                 <div class="advantage-item">
                     <div class="advantage-icon">⚡</div>
                     <h3>Сроки от 2 дней</h3>
-                    <p>Полный цикл работ по обшивку балкона за 2-4 дня. Слаженная работа бригады без простоев и задержек.</p>
+                    <p>Полный цикл работ по обшивке балкона за 2-4 дня. Слаженная работа бригады без простоев и задержек.</p>
                 </div>
                 
                 <div class="advantage-item">
@@ -1483,7 +1539,7 @@
                 </div>
                 
                 <div class="service-item">
-                    <h3>Отделка панелями ПВХ и МDF</h3>
+                    <h3>Отделка панелями ПВХ и МДФ</h3>
                     <p>Современные влагостойкие материалы с разнообразными текстурными решениями. Долговечность и эстетичный внешний вид.</p>
                 </div>
                 
@@ -1635,7 +1691,7 @@
                 }
             });
             
-            backToTopBtn.addEventListener('click', (e) {
+            backToTopBtn.addEventListener('click', (e) => {
                 e.preventDefault();
                 window.scrollTo({ top: 0, behavior: 'smooth' });
             });
@@ -1826,7 +1882,7 @@
 
             // Закрытие по ESC
             document.addEventListener('keydown', (e) => {
-                if (e.key === 'Escape') {
+                if (e.key === 'Eescape') {
                     if (modalOverlay.classList.contains('active')) {
                         modalOverlay.classList.remove('active');
                         document.body.style.overflow = '';
