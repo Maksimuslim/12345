@@ -1855,10 +1855,10 @@
                     const result = await response.json();
 
                    if (response.ok) {
-    console.log('✅ Заявка отправлена! Мы свяжемся с вами в ближайшее время.');
-    orderForm.reset();
-    modalOverlay.classList.remove('active');
-} else {
+                        alert('✅ Заявка отправлена! Мы свяжемся с вами в ближайшее время.');
+                        orderForm.reset();
+                        modalOverlay.classList.remove('active');
+                    } else {
                         throw new Error(result.description || 'Unknown Telegram API error');
                     }
                 } catch (error) {
