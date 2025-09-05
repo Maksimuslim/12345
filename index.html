@@ -116,7 +116,7 @@
             color: var(--text);
         }
 
-        /* Шапка - переработана для мобильных */
+        /* Шапка */
         header {
             background: rgba(255, 255, 255, 0.95);
             padding: 15px 0;
@@ -132,72 +132,173 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            position: relative;
         }
 
         .logo-container {
             display: flex;
             align-items: center;
-            gap: 15px;
+            gap: 80px;
         }
         
+        .logo-img {
+            margin-left: -200px;
+        }
+
         .logo-img img {
-            height: 50px;
+            height: 60px;
             width: auto;
             transition: opacity 0.3s;
         }
 
-        .logo-text {
-            font-weight: 600;
-            font-size: 14px;
-            line-height: 1.3;
-            color: var(--dark);
-            display: none; /* Скрываем на мобильных */
+        /* Центральный блок с текстом и контактами */
+        .header-center {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            text-align: center;
         }
 
+        .logo-text {
+            font-weight: 600;
+            font-size: 20px;
+            line-height: 1.4;
+            color: var(--dark);
+            margin-bottom: 5px;
+            white-space: normal;
+            text-align: center;
+            width: 500%;
+        }
+
+        .contact-line {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 100px;
+        }
+
+        .contact-line a[href^="tel:"] {
+            font-weight: 700;
+            font-size: 22px;
+            text-decoration: none;
+            color: var(--dark);
+            white-space: nowrap;
+            margin-right: 100px;
+        }
+
+        .instagram-link {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            white-space: nowrap;
+            margin-left: 100px;
+        }
+
+        .instagram-link:hover {
+            color: var(--accent);
+        }
+
+        .instagram-link::before {
+            content: '📸';
+            margin-right: 5px;
+        }
+
+        /* Навигация - смещена максимально вправо */
         .nav-desktop {
-            display: none; /* Скрываем на мобильных */
+            display: flex;
+            gap: 30px;
+            position: absolute;
+            right: -300px;
+            top: 40%;
+            transform: translateY(-50%);
+        }
+
+        .highlighted {
+            background: linear-gradient(135deg, #3A9DBF);
+            color: white;
+            padding: 4px 10px;
+            border-radius: 15px;
+            white-space: nowrap;
+            display: inline-block;
+            font-weight: 700;
+            font-size: 16px;
+            box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+
+        .highlighted:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+        }
+
+        .nav-desktop a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 600;
+            transition: var(--transition);
+            position: relative;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .nav-desktop a:hover {
+            color: var(--primary);
+        }
+
+        .nav-desktop a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: width 0.3s;
+        }
+
+        .nav-desktop a:hover::after {
+            width: 100%;
         }
 
         .burger-menu {
-            display: block;
+            display: none;
             cursor: pointer;
             font-size: 24px;
             color: var(--dark);
-            z-index: 1001;
         }
         
         /* Главный экран */
         .hero {
             height: 100vh;
-            min-height: 600px;
+            min-height: 700px;
             background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), 
                         url('https://images.unsplash.com/photo-1595526114035-0d45ed16cfbf?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') no-repeat center/cover;
             display: flex;
             align-items: center;
-            margin-top: 80px;
-            text-align: center;
+            margin-top: 90px;
+            text-align: left;
+            position: relative;
+            padding-left: 5%;
             color: white;
-            padding: 0 20px;
         }
         
         .hero-content {
             width: 100%;
             animation: fadeIn 1s ease-out;
             max-width: 650px;
-            margin: 0 auto;
         }
         
         .hero h1 {
-            font-size: 2.2rem;
-            margin-bottom: 20px;
+            font-size: 3.2rem;
+            margin-bottom: 25px;
             color: white;
             text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
             line-height: 1.2;
         }
         
         .hero p {
-            font-size: 1.1rem;
-            margin: 0 0 30px 0;
+            font-size: 1.3rem;
+            margin: 0 0 40px 0;
             font-weight: 500;
             line-height: 1.6;
             text-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
@@ -205,8 +306,8 @@
         
         .hero-btn {
             background: var(--secondary);
-            padding: 16px 35px;
-            font-size: 16px;
+            padding: 18px 40px;
+            font-size: 18px;
             font-weight: 700;
         }
         
@@ -225,16 +326,16 @@
         /* Плавающая кнопка */
         .floating-btn {
             position: fixed;
-            left: 20px;
-            bottom: 20px;
+            left: 30px;
+            bottom: 30px;
             z-index: 998;
-            padding: 15px 25px;
+            padding: 20px 40px;
             background: var(--secondary);
             color: var(--dark);
             border-radius: 50px;
             text-decoration: none;
             font-weight: bold;
-            font-size: 16px;
+            font-size: 18px;
             transition: var(--transition);
             border: none;
             cursor: pointer;
@@ -260,13 +361,13 @@
         
         .advantages-grid {
             display: grid;
-            grid-template-columns: 1fr;
-            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
         }
         
         .advantage-item {
             background: white;
-            padding: 25px;
+            padding: 30px;
             border-radius: 15px;
             box-shadow: var(--shadow);
             transition: var(--transition);
@@ -287,7 +388,7 @@
         }
         
         .advantage-item:hover {
-            transform: translateY(-5px);
+            transform: translateY(-10px);
         }
         
         .advantage-item:hover::before {
@@ -296,13 +397,13 @@
         }
         
         .advantage-icon {
-            font-size: 40px;
-            margin-bottom: 15px;
+            font-size: 50px;
+            margin-bottom: 20px;
             color: var(--primary);
         }
         
         .advantage-item h3 {
-            font-size: 1.3rem;
+            font-size: 1.4rem;
             margin-bottom: 15px;
             position: relative;
             padding-bottom: 15px;
@@ -332,13 +433,13 @@
         
         .services-grid {
             display: grid;
-            grid-template-columns: 1fr;
-            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
         }
         
         .service-item {
             background: var(--light);
-            padding: 25px;
+            padding: 30px;
             border-radius: 15px;
             transition: var(--transition);
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
@@ -356,7 +457,7 @@
             color: var(--primary);
             position: relative;
             padding-bottom: 15px;
-            margin-bottom: 15px;
+            margin-bottom: 20px;
         }
 
         .service-item h3::after {
@@ -382,12 +483,12 @@
 
         .gallery {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 10px;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
         }
 
         .gallery-item {
-            height: 150px;
+            height: 200px;
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
@@ -414,6 +515,8 @@
 
         .gallery-item:hover {
             transform: scale(1.03);
+            box-shadow: var(--shadow);
+            will-change: transform;
         }
 
         .gallery-item:hover::before {
@@ -462,16 +565,16 @@
 
         .modal-gallery-close {
             position: absolute;
-            top: 10px;
-            right: 10px;
+            top: -50px;
+            right: -50px;
             color: white;
-            font-size: 30px;
+            font-size: 40px;
             cursor: pointer;
             background: none;
             border: none;
             z-index: 10001;
-            width: 40px;
-            height: 40px;
+            width: 50px;
+            height: 50px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -485,7 +588,7 @@
             display: flex;
             justify-content: space-between;
             transform: translateY(-50%);
-            padding: 0 10px;
+            padding: 0 30px;
             pointer-events: none;
         }
 
@@ -494,9 +597,9 @@
             background: rgba(255, 255, 255, 0.2);
             border: none;
             color: white;
-            padding: 15px;
+            padding: 20px;
             cursor: pointer;
-            font-size: 20px;
+            font-size: 24px;
             border-radius: 50%;
             pointer-events: all;
             transition: background 0.3s ease;
@@ -514,14 +617,14 @@
         
         .about-container {
             display: grid;
-            grid-template-columns: 1fr;
-            gap: 40px;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
             align-items: center;
         }
         
         .about-text {
             background: var(--light);
-            padding: 30px;
+            padding: 40px;
             border-radius: 15px;
             box-shadow: var(--shadow);
         }
@@ -529,7 +632,7 @@
         .about-image {
             border-radius: 15px;
             overflow: hidden;
-            height: 300px;
+            height: 500px;
             background: url('https://images.unsplash.com/photo-1582407947304-fd86f028f716?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80') no-repeat center/cover;
             box-shadow: var(--shadow);
             transition: var(--transition);
@@ -548,7 +651,7 @@
         
         /* Футер */
         footer {
-            padding: 40px 0 20px;
+            padding: 50px 0 30px;
             background: var(--dark);
             color: white;
             text-align: center;
@@ -557,7 +660,7 @@
         .footer-container {
             display: flex;
             flex-direction: column;
-            gap: 15px;
+            gap: 20px;
         }
         
         .footer-copyright {
@@ -568,18 +671,18 @@
         /* Кнопка "Наверх" */
         .back-to-top {
             position: fixed;
-            bottom: 80px;
-            right: 20px;
+            bottom: 30px;
+            right: 30px;
             background: var(--primary);
             color: white;
-            width: 50px;
-            height: 50px;
+            width: 60px;
+            height: 60px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             text-decoration: none;
-            font-size: 20px;
+            font-size: 24px;
             box-shadow: var(--shadow);
             opacity: 0;
             visibility: hidden;
@@ -622,7 +725,7 @@
         
         .modal {
             background: white;
-            padding: 30px 20px;
+            padding: 40px;
             border-radius: 15px;
             width: 90%;
             max-width: 500px;
@@ -640,7 +743,7 @@
             position: absolute;
             top: 15px;
             right: 15px;
-            font-size: 24px;
+            font-size: 28px;
             cursor: pointer;
             color: var(--text);
             background: none;
@@ -654,8 +757,8 @@
         }
         
         .modal-title {
-            font-size: 1.5rem;
-            margin-bottom: 20px;
+            font-size: 1.8rem;
+            margin-bottom: 25px;
             color: var(--dark);
             text-align: center;
             position: relative;
@@ -668,7 +771,7 @@
             bottom: 0;
             left: 50%;
             transform: translateX(-50%);
-            width: 60px;
+            width: 80px;
             height: 3px;
             background: var(--secondary);
             border-radius: 3px;
@@ -677,7 +780,7 @@
         .modal-form {
             display: flex;
             flex-direction: column;
-            gap: 15px;
+            gap: 20px;
         }
         
         .form-group {
@@ -693,7 +796,7 @@
         
         .form-group input, 
         .form-group textarea {
-            padding: 12px 15px;
+            padding: 15px 20px;
             border: 1px solid var(--gray);
             border-radius: 8px;
             font-size: 16px;
@@ -709,7 +812,7 @@
         }
         
         .form-group textarea {
-            min-height: 100px;
+            min-height: 120px;
             resize: vertical;
         }
         
@@ -717,7 +820,7 @@
             background: var(--primary);
             color: white;
             border: none;
-            padding: 14px 20px;
+            padding: 16px 25px;
             border-radius: 8px;
             font-weight: bold;
             font-size: 16px;
@@ -743,20 +846,20 @@
         /* Акция */
         .promo-banner {
             background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
-            padding: 15px 0;
+            padding: 20px 0;
             text-align: center;
             color: white;
             font-weight: bold;
-            font-size: 1.1rem;
+            font-size: 1.3rem;
             position: relative;
             z-index: 900;
-            margin-top: 80px; /* Учитываем высоту шапки */
+            margin-top: 90px;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
         }
 
         /* Блок с акциями */
         .promo-section {
-            padding: 20px 0;
+            padding: 25px 0;
             background: var(--light);
         }
 
@@ -768,21 +871,21 @@
 
         .promo-grid {
             display: grid;
-            grid-template-columns: 1fr;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 15px;
             margin-top: 15px;
         }
 
         .promo-card {
             background: white;
-            border-radius: 12px;
+            border-radius: 15px;
             padding: 15px;
             box-shadow: var(--shadow);
             transition: var(--transition);
             position: relative;
             overflow: hidden;
             border: 2px solid var(--secondary);
-            min-height: 200px;
+            min-height: 220px;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
@@ -823,7 +926,7 @@
         .promo-card .promo-price {
             display: block;
             text-align: center;
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             font-weight: bold;
             color: var(--primary);
             margin: 8px 0;
@@ -897,13 +1000,13 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 20px;
+            gap: 25px;
         }
 
         .mobile-nav a {
             text-decoration: none;
             color: var(--dark);
-            font-size: 1.3rem;
+            font-size: 1.5rem;
             font-weight: 600;
             font-family: 'Montserrat', sans-serif;
             transition: var(--transition);
@@ -914,122 +1017,251 @@
         }
 
         .mobile-contact {
-            margin-top: 30px;
+            margin-top: 40px;
             text-align: center;
         }
 
         .mobile-contact a {
             display: block;
             margin-bottom: 15px;
-            font-size: 1.1rem;
+            font-size: 1.2rem;
             color: var(--primary);
             text-decoration: none;
             font-weight: 600;
         }
 
-        /* Адаптивность для планшетов и десктопов */
-        @media (min-width: 768px) {
-            .logo-text {
-                display: block;
-                font-size: 16px;
-            }
-            
-            .advantages-grid,
-            .services-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            
-            .gallery {
-                grid-template-columns: repeat(3, 1fr);
-            }
-            
-            .about-container {
-                grid-template-columns: 1fr 1fr;
-            }
-            
-            .about-image {
-                height: 400px;
-            }
-            
-            .hero {
-                text-align: left;
-                padding-left: 5%;
-                margin-top: 90px;
-            }
-            
-            .hero-content {
-                margin: 0;
-            }
-            
-            .hero h1 {
-                font-size: 2.8rem;
-            }
-            
-            .hero p {
-                font-size: 1.2rem;
-            }
-            
-            .promo-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        @media (min-width: 992px) {
-            .nav-desktop {
-                display: flex;
-                gap: 20px;
-            }
-            
-            .burger-menu {
-                display: none;
-            }
-            
-            .advantages-grid {
-                grid-template-columns: repeat(4, 1fr);
-            }
-            
-            .services-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            
-            .logo-text {
-                font-size: 18px;
-            }
-            
-            .logo-img img {
-                height: 60px;
-            }
-            
-            .promo-grid {
-                grid-template-columns: repeat(4, 1fr);
+        /* ================= МОБИЛЬНАЯ ВЕРСИЯ ================= */
+        @media (max-width: 992px) {
+            /* Шапка для мобильных */
+            header {
+                position: relative;
+                padding: 10px 0;
+                margin-top: 0;
             }
             
             .header-container {
-                justify-content: space-between;
+                flex-wrap: wrap;
             }
             
             .logo-container {
-                gap: 30px;
+                width: 100%;
+                justify-content: space-between;
+                gap: 10px;
             }
-        }
-
-        @media (min-width: 1200px) {
+            
+            .logo-img {
+                margin-left: 0;
+                flex-shrink: 0;
+            }
+            
+            .logo-img img {
+                height: 50px;
+            }
+            
+            .logo-text {
+                width: auto;
+                text-align: center;
+                font-size: 14px;
+                line-height: 1.3;
+                margin-bottom: 0;
+            }
+            
+            .contact-info {
+                display: none;
+            }
+            
+            .nav-desktop {
+                display: none;
+            }
+            
+            .burger-menu {
+                display: block;
+                flex-shrink: 0;
+                font-size: 22px;
+            }
+            
+            .contact-line {
+                display: none;
+            }
+            
+            /* Промо-баннер для мобильных */
+            .promo-banner {
+                margin-top: 0;
+                padding: 15px 0;
+                font-size: 1.1rem;
+                position: relative;
+                z-index: 1;
+            }
+            
+            /* Герой для мобильных */
+            .hero {
+                margin-top: 0;
+                min-height: 500px;
+                padding: 0 15px;
+                text-align: center;
+            }
+            
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+                margin-bottom: 30px;
+            }
+            
+            .hero-btn {
+                padding: 15px 30px;
+                font-size: 16px;
+            }
+            
+            /* Секции для мобильных */
+            .section {
+                padding: 60px 0;
+            }
+            
+            .section-title h2 {
+                font-size: 1.8rem;
+            }
+            
+            .section-descr {
+                font-size: 1rem;
+                margin-bottom: 40px;
+            }
+            
+            /* Преимущества для мобильных */
             .advantages-grid {
-                grid-template-columns: repeat(4, 1fr);
+                grid-template-columns: 1fr;
+                gap: 20px;
             }
             
+            .advantage-item {
+                padding: 20px;
+            }
+            
+            .advantage-icon {
+                font-size: 40px;
+            }
+            
+            .advantage-item h3 {
+                font-size: 1.2rem;
+            }
+            
+            /* Услуги для мобильных */
             .services-grid {
-                grid-template-columns: repeat(4, 1fr);
+                grid-template-columns: 1fr;
+                gap: 20px;
             }
             
+            .service-item {
+                padding: 20px;
+            }
+            
+            /* Галерея для мобильных */
             .gallery {
-                grid-template-columns: repeat(3, 1fr);
-                gap: 15px;
+                grid-template-columns: repeat(2, 1fr);
             }
             
             .gallery-item {
-                height: 200px;
+                height: 150px;
             }
+            
+            /* О нас для мобильных */
+            .about-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .about-image {
+                order: -1;
+                height: 300px;
+            }
+            
+            .about-text {
+                padding: 25px;
+            }
+            
+            /* Акции для мобильных */
+            .promo-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .promo-card {
+                min-height: auto;
+                padding: 20px 15px;
+            }
+            
+            /* Модальные окна для мобильных */
+            .modal {
+                padding: 25px 20px;
+            }
+            
+            .modal-title {
+                font-size: 1.5rem;
+            }
+            
+            /* Плавающая кнопка для мобильных */
+            .floating-btn {
+                left: 15px;
+                bottom: 15px;
+                padding: 15px 25px;
+                font-size: 14px;
+            }
+            
+            /* Кнопка "Наверх" для мобильных */
+            .back-to-top {
+                bottom: 20px;
+                right: 20px;
+                width: 50px;
+                height: 50px;
+                font-size: 20px;
+            }
+            
+            /* Модальное окно галереи для мобильных */
+            .modal-gallery-close {
+                top: 10px;
+                right: 10px;
+                font-size: 30px;
+            }
+            
+            .modal-gallery-nav {
+                padding: 0 10px;
+            }
+            
+            .modal-gallery-prev,
+            .modal-gallery-next {
+                padding: 12px;
+                font-size: 18px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .logo-text {
+                font-size: 12px;
+            }
+            
+            .hero h1 {
+                font-size: 1.6rem;
+            }
+            
+            .gallery {
+                grid-template-columns: 1fr;
+            }
+            
+            .gallery-item {
+                height: 180px;
+            }
+            
+            .floating-btn {
+                left: 10px;
+                bottom: 10px;
+                padding: 12px 20px;
+                font-size: 13px;
+            }
+        }
+
+        /* Стили только для ПК (остаются без изменений) */
+        @media (min-width: 993px) {
+            /* Все оригинальные стили для ПК остаются здесь */
         }
     </style>
 </head>
@@ -1042,28 +1274,28 @@
                     <img src="images/logo-balkonomania.png" alt="Balkonomania">
                 </div>
                 <div class="logo-text">
-                    Ремонт и отделка балконов в Минске
+                    Ремонт и отделка балконов в Минске — профессиональное преобразование вашего пространства
+                    <div class="contact-info">
+                        <a href="tel:+375291214229">+375 29 121 42 29</a>
+                        <a href="https://instagram.com/balkonomaniya.minsk" target="_blank" class="instagram-link" rel="noopener noreferrer">
+                            Наш Instagram
+                        </a>
+                    </div>
                 </div>
-            </div>
-            
-            <nav class="nav-desktop">
-                <a href="#services">Услуги</a>
-                <a href="#portfolio">Работы</a>
-                <a href="#advantages">Преимущества</a>
-                <a href="#about">О нас</a>
-            </nav>
-            
-            <div class="burger-menu" id="burgerMenu">
-                <i class="fas fa-bars"></i>
+                <nav class="nav-desktop">
+                    <a href="#services" class="highlighted">Услуги</a>
+                    <a href="#portfolio" class="highlighted">Работы</a>
+                    <a href="#advantages" class="highlighted">Преимущества</a>
+                    <a href="#about" class="highlighted">О нас</a>
+                </nav>
+                <div class="burger-menu" id="burgerMenu">☰</div>
             </div>
         </div>
     </header>
 
     <!-- Мобильное меню -->
     <div class="mobile-menu" id="mobileMenu">
-        <button class="mobile-menu-close" id="mobileMenuClose">
-            <i class="fas fa-times"></i>
-        </button>
+        <button class="mobile-menu-close" id="mobileMenuClose">✕</button>
         <nav class="mobile-nav">
             <a href="#services" onclick="closeMobileMenu()">Услуги</a>
             <a href="#portfolio" onclick="closeMobileMenu()">Работы</a>
@@ -1071,12 +1303,8 @@
             <a href="#about" onclick="closeMobileMenu()">О нас</a>
         </nav>
         <div class="mobile-contact">
-            <a href="tel:+375291214229">
-                <i class="fas fa-phone"></i> +375 29 121 42 29
-            </a>
-            <a href="https://instagram.com/balkonomaniya.minsk" target="_blank" rel="noopener noreferrer">
-                <i class="fab fa-instagram"></i> Наш Instagram
-            </a>
+            <a href="tel:+375291214229">+375 29 121 42 29</a>
+            <a href="https://instagram.com/balkonomaniya.minsk" target="_blank" rel="noopener noreferrer">Instagram</a>
         </div>
     </div>
 
@@ -1122,7 +1350,7 @@
     <section class="hero">
         <div class="container hero-content">
             <h1>Профессиональная отделка и остекление балконов в Минске</h1>
-            <p>Всего 2-4 рабочих дня на обшивку балкона — и ваш балкон станет уютным продолжением комнаты! Работаем быстро, качественно и с гарантией 24 месяца</p>
+            <p>Всего 2-4 рабочих дня на обшивку балкона — и ваш балкон станет уютным продолжением комната! Работаем быстро, качественно и с гарантией 24 месяца</p>
             <button class="btn hero-btn" id="orderBtn">Бесплатный замер</button>
         </div>
     </section>
@@ -1159,6 +1387,30 @@
                     <h3>Качественные материалы</h3>
                     <p>Работаем с проверенными производителями. Используем сертифицированные материалы с гарантией долговечности.</p>
                 </div>
+                
+                <div class="advantage-item">
+                    <div class="advantage-icon">📅</div>
+                    <h3>Рассрочка 0%</h3>
+                    <p>Собственная программа рассрочки без переплат. Оформление за один день без справок и поручителей.</p>
+                </div>
+                
+                <div class="advantage-item">
+                    <div class="advantage-icon">⚡</div>
+                    <h3>Сроки от 2 дней</h3>
+                    <p>Полный цикл работ по обшивку балкона за 2-4 дня. Слаженная работа бригады без простоев и задержек.</p>
+                </div>
+                
+                <div class="advantage-item">
+                    <div class="advantage-icon">🛡️</div>
+                    <h3>Гарантия 24 месяца</h3>
+                    <p>Официальная гарантия на все виды работ. Бесплатное устранение любых недостатков в течение 2 лет.</p>
+                </div>
+                
+                <div class="advantage-item">
+                    <div class="advantage-icon">🏆</div>
+                    <h3>Индивидуальный подход</h3>
+                    <p>Учитываем все ваши пожелания. Реализуем задуманное, чтобы интерьер стал идеальным для вас.</p>
+                </div>
             </div>
         </div>
     </section>
@@ -1183,13 +1435,33 @@
                 </div>
                 
                 <div class="service-item">
-                    <h3>Отделка панелями ПВХ и МДФ</h3>
+                    <h3>Отделка панелями ПВХ и МDF</h3>
                     <p>Современные влагостойкие материалы с разнообразными текстурными решениями. Долговечность и эстетичный внешний вид.</p>
                 </div>
                 
                 <div class="service-item">
                     <h3>Отделка ламинатом</h3>
                     <p>Создание стильного и прочного покрытия для стен и пола. Широкий выбор дизайнов и фактур под любой интерьер.</p>
+                </div>
+                
+                <div class="service-item">
+                    <h3>Изготовление мебели</h3>
+                    <p>Встроенные шкафы, полки и стеллажи для максимального использования пространства. Функциональность и эргономика.</p>
+                </div>
+                
+                <div class="service-item">
+                    <h3>Электромонтажные работы</h3>
+                    <p>Подключение розеток, освещения, тёплых полов. Гарантия надёжности и долговечности.</p>
+                </div>
+                
+                <div class="service-item">
+                    <h3>Наружная отделка</h3>
+                    <p>Обшивка парапета с внешной стороны сайдингом. Защита от воздействия окружающей среды и улучшение внешнего вида.</p>
+                </div>
+                
+                <div class="service-item">
+                    <h3>Объединение с комнатой</h3>
+                    <p>Качественное объединение балкона с жилым пространством. Увеличение полезной площади и создание единого интерьера.</p>
                 </div>
             </div>
         </div>
@@ -1204,12 +1476,13 @@
             </div>
             
             <div class="gallery">
-                <div class="gallery-item" style="background-image: url('https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80');" data-full="https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80"></div>
-                <div class="gallery-item" style="background-image: url('https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80');" data-full="https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80"></div>
-                <div class="gallery-item" style="background-image: url('https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80');" data-full="https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80"></div>
-                <div class="gallery-item" style="background-image: url('https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80');" data-full="https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80"></div>
-                <div class="gallery-item" style="background-image: url('https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80');" data-full="https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80"></div>
-                <div class="gallery-item" style="background-image: url('https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80');" data-full="https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80"></div>
+                <!-- 6 элементов по 3 в строку -->
+                <div class="gallery-item" style="background-image: url('photo/7 -1.jpg');" data-full="photo/7.jpg"></div>
+                <div class="gallery-item" style="background-image: url('photo/1-1.jpg');" data-full="photo/1.jpg"></div>
+                <div class="gallery-item" style="background-image: url('photo/2-2.png');" data-full="photo/2.jpg"></div>
+                <div class="gallery-item" style="background-image: url('photo/3-2.png');" data-full="photo/3-2-2.png"></div>
+                <div class="gallery-item" style="background-image: url('photo/4-1.jpg');" data-full="photo/4.jpg"></div>
+                <div class="gallery-item" style="background-image: url('photo/4-4.jpg');" data-full="photo/4-44.jpg"></div>
             </div>
         </div>
         
@@ -1234,6 +1507,9 @@
                 <div class="about-divider"></div>
                 <p>Мы специализируемся на профессиональном остеклении, утеплении и отделке балконов и лоджий в Минске. Более 10 лет создаём уютные и функциональные пространства, которые радуют наших клиентов долгие годы.</p>
                 <p>В своей работе мы используем только проверенные материалы от ведущих производителей и современные технологии монтажа. Это позволяет нам гарантировать высочайшее качество выполненных работ.</p>
+                <h3>Наш подход</h3>
+                <p>Мы предлагаем индивидуальные решения для каждого клиента, учитывая особенности помещения, ваши пожелания и бюджет. От первого замера до сдачи объекта — мы контролируем каждый этап работы.</p>
+                <p>Наши специалисты регулярно проходят обучение и повышают квалификацию, чтобы предлагать вам самые современные и эффективные решения для вашего балкона.</p>
             </div>
             <div class="about-image"></div>
         </div>
@@ -1311,7 +1587,7 @@
                 }
             });
             
-            backToTopBtn.addEventListener('click', (e) => {
+            backToTopBtn.addEventListener('click', (e) {
                 e.preventDefault();
                 window.scrollTo({ top: 0, behavior: 'smooth' });
             });
