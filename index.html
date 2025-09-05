@@ -1010,10 +1010,13 @@
             font-weight: 600;
             font-family: 'Montserrat', sans-serif;
             transition: var(--transition);
+            padding: 10px 20px;
+            border-radius: 8px;
         }
 
         .mobile-nav a:hover {
             color: var(--primary);
+            background-color: rgba(42, 107, 143, 0.1);
         }
 
         .mobile-contact {
@@ -1030,6 +1033,11 @@
             font-weight: 600;
         }
 
+        /* Контактная информация в мобильной шапке */
+        .mobile-contacts {
+            display: none;
+        }
+
         /* ================= МОБИЛЬНАЯ ВЕРСИЯ ================= */
         @media (max-width: 992px) {
             /* Шапка для мобильных */
@@ -1037,6 +1045,8 @@
                 position: relative;
                 padding: 10px 0;
                 margin-top: 0;
+                background: white;
+                box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
             }
             
             .header-container {
@@ -1047,6 +1057,7 @@
                 width: 100%;
                 justify-content: space-between;
                 gap: 10px;
+                flex-wrap: wrap;
             }
             
             .logo-img {
@@ -1059,11 +1070,40 @@
             }
             
             .logo-text {
-                width: auto;
+                width: 100%;
                 text-align: center;
                 font-size: 14px;
                 line-height: 1.3;
-                margin-bottom: 0;
+                margin: 10px 0;
+                order: 3;
+            }
+            
+            /* Контактная информация в мобильной шапке */
+            .mobile-contacts {
+                display: flex;
+                justify-content: center;
+                gap: 20px;
+                width: 100%;
+                margin: 10px 0;
+                order: 2;
+            }
+            
+            .mobile-contacts a {
+                font-weight: 600;
+                text-decoration: none;
+                color: #2A6B8F;
+                font-size: 14px;
+                display: flex;
+                align-items: center;
+            }
+            
+            .mobile-contacts a.tel {
+                font-weight: 700;
+            }
+            
+            .mobile-contacts a.insta::before {
+                content: '📸';
+                margin-right: 5px;
             }
             
             .contact-info {
@@ -1077,7 +1117,18 @@
             .burger-menu {
                 display: block;
                 flex-shrink: 0;
+                order: 1;
                 font-size: 22px;
+                background: none;
+                border: none;
+                cursor: pointer;
+                padding: 5px;
+                border-radius: 4px;
+                transition: background-color 0.3s;
+            }
+            
+            .burger-menu:hover {
+                background-color: rgba(42, 107, 143, 0.1);
             }
             
             .contact-line {
@@ -1091,6 +1142,7 @@
                 font-size: 1.1rem;
                 position: relative;
                 z-index: 1;
+                background: linear-gradient(135deg, #2A6B8F 0%, #3A9DBF 100%);
             }
             
             /* Герой для мобильных */
@@ -1115,27 +1167,23 @@
                 font-size: 16px;
             }
             
-            /* Секции для мобильных */
+            /* Остальные стили для мобильной версии */
             .section {
                 padding: 60px 0;
             }
             
             .section-title h2 {
-                font-size: 1.8rem;
+                font-size: 2rem;
             }
             
-            .section-descr {
-                font-size: 1rem;
-                margin-bottom: 40px;
-            }
-            
-            /* Преимущества для мобильных */
-            .advantages-grid {
+            .advantages-grid,
+            .services-grid {
                 grid-template-columns: 1fr;
                 gap: 20px;
             }
             
-            .advantage-item {
+            .advantage-item,
+            .service-item {
                 padding: 20px;
             }
             
@@ -1143,21 +1191,6 @@
                 font-size: 40px;
             }
             
-            .advantage-item h3 {
-                font-size: 1.2rem;
-            }
-            
-            /* Услуги для мобильных */
-            .services-grid {
-                grid-template-columns: 1fr;
-                gap: 20px;
-            }
-            
-            .service-item {
-                padding: 20px;
-            }
-            
-            /* Галерея для мобильных */
             .gallery {
                 grid-template-columns: repeat(2, 1fr);
             }
@@ -1166,7 +1199,6 @@
                 height: 150px;
             }
             
-            /* О нас для мобильных */
             .about-container {
                 grid-template-columns: 1fr;
             }
@@ -1180,26 +1212,10 @@
                 padding: 25px;
             }
             
-            /* Акции для мобильных */
             .promo-grid {
                 grid-template-columns: 1fr;
             }
             
-            .promo-card {
-                min-height: auto;
-                padding: 20px 15px;
-            }
-            
-            /* Модальные окна для мобильных */
-            .modal {
-                padding: 25px 20px;
-            }
-            
-            .modal-title {
-                font-size: 1.5rem;
-            }
-            
-            /* Плавающая кнопка для мобильных */
             .floating-btn {
                 left: 15px;
                 bottom: 15px;
@@ -1207,7 +1223,6 @@
                 font-size: 14px;
             }
             
-            /* Кнопка "Наверх" для мобильных */
             .back-to-top {
                 bottom: 20px;
                 right: 20px;
@@ -1216,7 +1231,6 @@
                 font-size: 20px;
             }
             
-            /* Модальное окно галереи для мобильных */
             .modal-gallery-close {
                 top: 10px;
                 right: 10px;
@@ -1232,6 +1246,14 @@
                 padding: 12px;
                 font-size: 18px;
             }
+            
+            .modal {
+                padding: 25px 20px;
+            }
+            
+            .modal-title {
+                font-size: 1.5rem;
+            }
         }
 
         @media (max-width: 576px) {
@@ -1239,8 +1261,17 @@
                 font-size: 12px;
             }
             
+            .mobile-contacts {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
             .hero h1 {
                 font-size: 1.6rem;
+            }
+            
+            .hero p {
+                font-size: 0.9rem;
             }
             
             .gallery {
@@ -1257,11 +1288,21 @@
                 padding: 12px 20px;
                 font-size: 13px;
             }
+            
+            .section-title h2 {
+                font-size: 1.8rem;
+            }
         }
 
-        /* Стили только для ПК (остаются без изменений) */
+        /* Стили только для ПК (оставлены без изменений) */
         @media (min-width: 993px) {
-            /* Все оригинальные стили для ПК остаются здесь */
+            .mobile-contacts {
+                display: none;
+            }
+            
+            .mobile-menu {
+                display: none;
+            }
         }
     </style>
 </head>
@@ -1273,6 +1314,13 @@
                 <div class="logo-img">
                     <img src="images/logo-balkonomania.png" alt="Balkonomania">
                 </div>
+                
+                <!-- Контакты для мобильной версии -->
+                <div class="mobile-contacts">
+                    <a href="tel:+375291214229" class="tel">+375 29 121 42 29</a>
+                    <a href="https://instagram.com/balkonomaniya.minsk" target="_blank" class="insta">Instagram</a>
+                </div>
+                
                 <div class="logo-text">
                     Ремонт и отделка балконов в Минске — профессиональное преобразование вашего пространства
                     <div class="contact-info">
@@ -1350,7 +1398,7 @@
     <section class="hero">
         <div class="container hero-content">
             <h1>Профессиональная отделка и остекление балконов в Минске</h1>
-            <p>Всего 2-4 рабочих дня на обшивку балкона — и ваш балкон станет уютным продолжением комната! Работаем быстро, качественно и с гарантией 24 месяца</p>
+            <p>Всего 2-4 рабочих дня на обшивку балкона — и ваш балкон станет уютным продолжением комнаты! Работаем быстро, качественно и с гарантией 24 месяца</p>
             <button class="btn hero-btn" id="orderBtn">Бесплатный замер</button>
         </div>
     </section>
@@ -1360,7 +1408,7 @@
         <div class="container">
             <div class="section-title">
                 <h2>Почему выбирают нас</h2>
-                <p class="section-descr">Более 10 лет создаём уют и комфорт в ваших домах</p>
+                <p class="section-descr">Более 10 лет создаём уют и комфорт в ваших дома</p>
             </div>
             
             <div class="advantages-grid">
