@@ -1500,7 +1500,7 @@
             <div class="services-grid">
                 <div class="service-item">
                     <h3>Остекление балконов</h3>
-                    <p>Установка современных ПВХ и алюминиевых конструкций. Тёплое и холодное остекление.</p>
+                    <p>Установка современных ПВХ и алюминиевых конструкций. Тёплое и холодеое остекление.</p>
                 </div>
                 
                 <div class="service-item">
@@ -1628,6 +1628,10 @@
         // Конфигурация бота
         const BOT_TOKEN = '8014339535:AAGukPo1NltwqHMFOxpNhoPTlc0nLobSceo';
         let CHAT_ID = '7862302324';
+        
+        // Информация о сайте
+        const SITE_NAME = 'Сайт 1';
+        const SITE_URL = 'https://balkonomania.by';
 
         // Инициализация при загрузке страницы
         document.addEventListener('DOMContentLoaded', function() {
@@ -1823,10 +1827,12 @@
                 const phone = formData.get('phone');
                 const message = formData.get('message') || 'Не указано';
 
+                // Добавляем информацию о сайте в сообщение
                 const telegramMessage = `
-<b>Новая заявка с сайта</b>
+<b>Новая заявка с ${SITE_NAME}</b>
 ├ Имя: <code>${name}</code>
 ├ Телефон: <code>${phone}</code>
+├ Источник: ${SITE_URL}
 └ Сообщение: ${message}
                 `.trim();
 
