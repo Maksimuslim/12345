@@ -36,6 +36,7 @@
             line-height: 1.6;
             position: relative;
             background-color: #fff;
+            overflow-x: hidden;
         }
 
         h1, h2, h3, h4, h5, h6 {
@@ -263,6 +264,7 @@
             cursor: pointer;
             font-size: 24px;
             color: var(--dark);
+            z-index: 1001;
         }
         
         /* Главный экран */
@@ -519,6 +521,93 @@
 
         .gallery-item:hover::before {
             opacity: 1;
+        }
+
+        /* === СТИЛИ МОДАЛЬНОГО ОКНА ГАЛЕРЕИ === */
+        .modal-gallery {
+            display: none;
+            position: fixed;
+            z-index: 10000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .modal-gallery.show {
+            display: flex;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .modal-gallery-content {
+            position: relative;
+            max-width: 90vw;
+            max-height: 90vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-gallery-image {
+            max-width: 100%;
+            max-height: 80vh;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+            border-radius: 12px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+        }
+
+        .modal-gallery-close {
+            position: absolute;
+            top: -50px;
+            right: -50px;
+            color: white;
+            font-size: 40px;
+            cursor: pointer;
+            background: none;
+            border: none;
+            z-index: 10001;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-gallery-nav {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: space-between;
+            transform: translateY(-50%);
+            padding: 0 30px;
+            pointer-events: none;
+        }
+
+        .modal-gallery-prev,
+        .modal-gallery-next {
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            color: white;
+            padding: 20px;
+            cursor: pointer;
+            font-size: 24px;
+            border-radius: 50%;
+            pointer-events: all;
+            transition: background 0.3s ease;
+        }
+
+        .modal-gallery-prev:hover,
+        .modal-gallery-next:hover {
+            background: rgba(255, 255, 255, 0.4);
         }
 
         /* О нас */
@@ -875,152 +964,65 @@
             to { transform: rotate(360deg); }
         }
 
-        /* === СТИЛИ МОДАЛЬНОГО ОКНА ГАЛЕРЕИ === */
-        .modal-gallery {
-            display: none;
-            position: fixed;
-            z-index: 10000;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.95);
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-            box-sizing: border-box;
-        }
-
-        .modal-gallery.show {
-            display: flex;
-            animation: fadeIn 0.3s ease;
-        }
-
-        .modal-gallery-content {
-            position: relative;
-            max-width: 90vw;
-            max-height: 90vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .modal-gallery-image {
-            max-width: 100%;
-            max-height: 80vh;
-            width: auto;
-            height: auto;
-            object-fit: contain;
-            border-radius: 12px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.5);
-        }
-
-        .modal-gallery-close {
-            position: absolute;
-            top: -50px;
-            right: -50px;
-            color: white;
-            font-size: 40px;
-            cursor: pointer;
-            background: none;
-            border: none;
-            z-index: 10001;
-            width: 50px;
-            height: 50px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .modal-gallery-nav {
-            position: absolute;
-            top: 50%;
-            left: 0;
-            right: 0;
-            display: flex;
-            justify-content: space-between;
-            transform: translateY(-50%);
-            padding: 0 30px;
-            pointer-events: none;
-        }
-
-        .modal-gallery-prev,
-        .modal-gallery-next {
-            background: rgba(255, 255, 255, 0.2);
-            border: none;
-            color: white;
-            padding: 20px;
-            cursor: pointer;
-            font-size: 24px;
-            border-radius: 50%;
-            pointer-events: all;
-            transition: background 0.3s ease;
-        }
-
-        .modal-gallery-prev:hover,
-        .modal-gallery-next:hover {
-            background: rgba(255, 255, 255, 0.4);
-        }
-
-        /* Анимация появления */
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
-        /* Мобильная навигация */
-        .mobile-nav {
-            display: none;
+        /* Мобильное меню */
+        .mobile-menu {
             position: fixed;
             top: 0;
-            left: 0;
-            width: 100%;
+            right: -100%;
+            width: 80%;
+            max-width: 400px;
             height: 100vh;
-            background: var(--light);
-            z-index: 999;
-            padding: 80px 20px 20px;
-            transform: translateX(-100%);
-            transition: transform 0.3s ease;
+            background: white;
+            z-index: 1000;
+            padding: 80px 30px 30px;
+            transition: right 0.3s ease;
+            box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
             overflow-y: auto;
         }
 
-        .mobile-nav.active {
-            transform: translateX(0);
+        .mobile-menu.active {
+            right: 0;
         }
 
-        .mobile-nav-close {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            font-size: 30px;
-            background: none;
-            border: none;
-            cursor: pointer;
-            color: var(--dark);
-        }
-
-        .mobile-nav a {
+        .mobile-menu .highlighted {
             display: block;
-            padding: 15px 0;
-            text-decoration: none;
-            color: var(--dark);
-            font-weight: 600;
-            font-size: 18px;
-            border-bottom: 1px solid rgba(0,0,0,0.1);
-            font-family: 'Montserrat', sans-serif;
-        }
-
-        .mobile-nav a.highlighted {
-            background: var(--primary);
-            color: white;
-            padding: 10px 15px;
-            border-radius: 8px;
-            margin: 10px 0;
+            margin: 15px 0;
             text-align: center;
-            border: none;
+            padding: 10px;
         }
 
-        /* Мобильные стили */
+        .mobile-menu-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .mobile-menu-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .mobile-contact-info {
+            margin-top: 30px;
+            text-align: center;
+        }
+
+        .mobile-contact-info a {
+            display: block;
+            margin: 10px 0;
+            font-size: 18px;
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        /* Мобильная версия */
         @media (max-width: 1200px) {
             .logo-img {
                 margin-left: 0;
@@ -1040,6 +1042,10 @@
             
             .instagram-link {
                 margin-left: 30px;
+            }
+            
+            .nav-desktop {
+                right: -200px;
             }
         }
 
@@ -1063,36 +1069,6 @@
             .hero h1 {
                 font-size: 2.5rem;
             }
-        }
-        
-        @media (max-width: 768px) {
-            /* Шапка для мобильных */
-            header {
-                padding: 10px 0;
-            }
-            
-            .header-container {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-            
-            .logo-container {
-                width: 100%;
-                justify-content: space-between;
-                gap: 0;
-            }
-            
-            .logo-img {
-                margin-left: 0;
-            }
-            
-            .logo-img img {
-                height: 50px;
-            }
-            
-            .logo-text {
-                display: none;
-            }
             
             .nav-desktop {
                 display: none;
@@ -1100,157 +1076,189 @@
             
             .burger-menu {
                 display: block;
-                font-size: 28px;
             }
             
-            /* Мобильная навигация */
-            .mobile-nav {
-                display: block;
+            .logo-container {
+                width: 100%;
+                justify-content: space-between;
+                gap: 20px;
             }
             
-            /* Главный экран для мобильных */
+            .header-center {
+                position: static;
+                transform: none;
+                text-align: left;
+                flex-grow: 1;
+            }
+            
+            .logo-text {
+                font-size: 16px;
+                width: 100%;
+                margin-bottom: 5px;
+            }
+            
+            .contact-line {
+                justify-content: flex-start;
+                gap: 15px;
+            }
+            
+            .contact-line a[href^="tel:"] {
+                font-size: 18px;
+                margin-right: 0;
+            }
+            
+            .instagram-link {
+                font-size: 14px;
+                margin-left: 0;
+            }
+        }
+
+        @media (max-width: 768px) {
             .hero {
                 text-align: center;
                 padding-left: 0;
-                margin-top: 70px;
+                margin-top: 140px;
                 min-height: 600px;
-                height: auto;
-                padding: 60px 0;
-            }
-            
-            .hero-content {
-                max-width: 100%;
-                padding: 0 15px;
             }
             
             .hero h1 {
-                font-size: 1.8rem;
-                margin-bottom: 20px;
+                font-size: 2.2rem;
             }
             
             .hero p {
-                font-size: 1rem;
-                margin-bottom: 30px;
+                font-size: 1.1rem;
             }
             
-            .hero-btn {
-                padding: 15px 30px;
-                font-size: 16px;
-            }
-            
-            /* Секции для мобильных */
             .section {
                 padding: 60px 0;
             }
             
             .section-title h2 {
+                font-size: 2rem;
+            }
+            
+            .modal {
+                padding: 30px 20px;
+            }
+            
+            .services-grid,
+            .advantages-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .gallery {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .promo-banner {
+                margin-top: 140px;
+                font-size: 1.1rem;
+                padding: 15px 0;
+            }
+            
+            .header-container {
+                flex-wrap: wrap;
+            }
+            
+            .logo-img img {
+                height: 50px;
+            }
+            
+            .logo-text {
+                font-size: 14px;
+            }
+            
+            .contact-line {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 5px;
+            }
+            
+            .contact-line a[href^="tel:"] {
+                font-size: 16px;
+            }
+            
+            .instagram-link {
+                font-size: 14px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero {
+                min-height: 500px;
+                height: auto;
+                padding: 60px 0;
+            }
+            
+            .hero h1 {
                 font-size: 1.8rem;
             }
             
-            .section-descr {
+            .hero p {
                 font-size: 1rem;
-                margin-bottom: 40px;
             }
             
-            /* Преимущества для мобильных */
-            .advantages-grid {
-                grid-template-columns: 1fr;
-                gap: 20px;
+            .hero-btn {
+                padding: 14px 30px;
+                font-size: 16px;
             }
             
-            .advantage-item {
-                padding: 20px;
-            }
-            
-            .advantage-icon {
-                font-size: 40px;
-                margin-bottom: 15px;
-            }
-            
-            .advantage-item h3 {
-                font-size: 1.2rem;
-            }
-            
-            /* Услуги для мобильных */
-            .services-grid {
-                grid-template-columns: 1fr;
-                gap: 20px;
-            }
-            
-            .service-item {
-                padding: 20px;
-            }
-            
-            /* Галерея для мобильных */
             .gallery {
                 grid-template-columns: 1fr;
-                gap: 10px;
             }
             
             .gallery-item {
                 height: 250px;
             }
             
-            /* О нас для мобильных */
-            .about-text {
-                padding: 25px;
+            .advantage-item,
+            .service-item {
+                padding: 20px;
             }
             
-            .about-image {
-                height: 300px;
+            .floating-btn {
+                left: 10px;
+                bottom: 10px;
+                padding: 12px 20px;
+                font-size: 14px;
             }
             
-            /* Акции для мобильных */
-            .promo-banner {
-                margin-top: 70px;
-                padding: 15px 0;
-                font-size: 1rem;
+            .back-to-top {
+                right: 15px;
+                bottom: 15px;
+                width: 50px;
+                height: 50px;
+                font-size: 20px;
             }
             
             .promo-grid {
                 grid-template-columns: 1fr;
             }
             
-            .promo-card {
-                min-height: auto;
+            .logo-text {
+                font-size: 12px;
             }
             
-            /* Футер для мобильных */
-            footer {
-                padding: 40px 0 20px;
+            .contact-line a[href^="tel:"] {
+                font-size: 14px;
             }
-            
-            /* Модальные окна для мобильных */
-            .modal {
-                padding: 30px 20px;
+        }
+
+        /* Адаптивность для мобильных устройств */
+        @media (max-width: 768px) {
+            .gallery {
+                grid-template-columns: repeat(2, 1fr);
             }
-            
-            .modal-title {
-                font-size: 1.5rem;
+        }
+
+        @media (max-width: 480px) {
+            .gallery {
+                grid-template-columns: 1fr;
             }
-            
-            /* Контакты в шапке для мобильных */
-            .mobile-contact {
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                margin-top: 20px;
-                width: 100%;
-            }
-            
-            .mobile-contact a[href^="tel:"] {
-                font-size: 18px;
-                font-weight: 700;
-                color: var(--dark);
-                text-decoration: none;
-                margin-bottom: 10px;
-            }
-            
-            .mobile-contact .instagram-link {
-                font-size: 16px;
-            }
-            
-            /* Адаптация модального окна галереи */
+        }
+
+        /* Адаптивность для мобильного модального окна галереи */
+        @media (max-width: 768px) {
             .modal-gallery-close {
                 top: 10px;
                 right: 10px;
@@ -1277,56 +1285,10 @@
             }
         }
 
-        @media (max-width: 480px) {
-            .hero h1 {
-                font-size: 1.6rem;
-            }
-            
-            .section-title h2 {
-                font-size: 1.5rem;
-            }
-            
-            .floating-btn {
-                left: 10px;
-                bottom: 10px;
-                padding: 12px 20px;
-                font-size: 14px;
-            }
-            
-            .back-to-top {
-                bottom: 20px;
-                right: 20px;
-                width: 50px;
-                height: 50px;
-                font-size: 20px;
-            }
-        }
-
-        /* Дополнительные улучшения для мобильных */
-        @media (max-width: 768px) {
-            /* Улучшение читаемости текста */
-            body {
-                font-size: 16px;
-                line-height: 1.5;
-            }
-            
-            /* Улучшение кнопок для касания */
-            .btn, .modal-submit, .gallery-item {
-                cursor: pointer;
-                -webkit-tap-highlight-color: transparent;
-            }
-            
-            /* Улучшение форм для мобильных */
-            input, textarea {
-                font-size: 16px; /* Предотвращает масштабирование в iOS */
-            }
-            
-            /* Оптимизация анимаций для производительности */
-            .advantage-item, .service-item, .promo-card {
-                transform: translateZ(0);
-                backface-visibility: hidden;
-                perspective: 1000px;
-            }
+        /* Анимация появления */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
     </style>
 </head>
@@ -1338,9 +1300,11 @@
                 <div class="logo-img">
                     <img src="images/logo-balkonomania.png" alt="Balkonomania">
                 </div>
-                <div class="logo-text">
-                    Ремонт и отделка балконов в Минске — профессиональное преобразование вашего пространства<br>
-                    <div class="contact-info">
+                <div class="header-center">
+                    <div class="logo-text">
+                        Ремонт и отделка балконов в Минске — профессиональное преобразование вашего пространства
+                    </div>
+                    <div class="contact-line">
                         <a href="tel:+375291214229">+375 29 121 42 29</a>
                         <a href="https://instagram.com/balkonomaniya.minsk" target="_blank" class="instagram-link" rel="noopener noreferrer">
                             Наш Instagram
@@ -1358,14 +1322,15 @@
         </div>
     </header>
 
-    <!-- Мобильная навигация -->
-    <div class="mobile-nav" id="mobileNav">
-        <button class="mobile-nav-close" id="mobileNavClose">×</button>
+    <!-- Мобильное меню -->
+    <div class="mobile-menu-overlay" id="mobileMenuOverlay"></div>
+    <div class="mobile-menu" id="mobileMenu">
         <a href="#services" class="highlighted">Услуги</a>
         <a href="#portfolio" class="highlighted">Работы</a>
         <a href="#advantages" class="highlighted">Преимущества</a>
         <a href="#about" class="highlighted">О нас</a>
-        <div class="mobile-contact">
+        
+        <div class="mobile-contact-info">
             <a href="tel:+375291214229">+375 29 121 42 29</a>
             <a href="https://instagram.com/balkonomaniya.minsk" target="_blank" class="instagram-link" rel="noopener noreferrer">
                 Наш Instagram
@@ -1392,7 +1357,7 @@
                 
                 <div class="promo-card">
                     <h3>Подарок каждому клиенту при заказе комплексной обшивки.</h3>
-                    <p>При заказе комплексной обшивки балкона (лоджии) шкафчик до подоконника из ДСП в подарок!</p>
+                    <p>При заказе комплексной обшивки балкона (лоджии) шкафчик до подоконника из ДСП в подарок!.</p>
                     <img src="images/1.jpg" alt="Balkonomania" class="promo-image">
                 </div>
                 
@@ -1624,24 +1589,27 @@
         document.addEventListener('DOMContentLoaded', function() {
             // Мобильное меню
             const burgerMenu = document.querySelector('.burger-menu');
-            const mobileNav = document.getElementById('mobileNav');
-            const mobileNavClose = document.getElementById('mobileNavClose');
+            const mobileMenu = document.getElementById('mobileMenu');
+            const mobileMenuOverlay = document.getElementById('mobileMenuOverlay');
             
             burgerMenu.addEventListener('click', function() {
-                mobileNav.classList.add('active');
-                document.body.style.overflow = 'hidden';
+                mobileMenu.classList.toggle('active');
+                mobileMenuOverlay.classList.toggle('active');
+                document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
             });
             
-            mobileNavClose.addEventListener('click', function() {
-                mobileNav.classList.remove('active');
+            mobileMenuOverlay.addEventListener('click', function() {
+                mobileMenu.classList.remove('active');
+                mobileMenuOverlay.classList.remove('active');
                 document.body.style.overflow = '';
             });
             
             // Закрытие мобильного меню при клике на ссылку
-            const mobileLinks = mobileNav.querySelectorAll('a');
-            mobileLinks.forEach(link => {
+            const mobileMenuLinks = mobileMenu.querySelectorAll('a');
+            mobileMenuLinks.forEach(link => {
                 link.addEventListener('click', function() {
-                    mobileNav.classList.remove('active');
+                    mobileMenu.classList.remove('active');
+                    mobileMenuOverlay.classList.remove('active');
                     document.body.style.overflow = '';
                 });
             });
@@ -1856,8 +1824,9 @@
                         modal.classList.remove('show');
                         document.body.style.overflow = '';
                     }
-                    if (mobileNav.classList.contains('active')) {
-                        mobileNav.classList.remove('active');
+                    if (mobileMenu.classList.contains('active')) {
+                        mobileMenu.classList.remove('active');
+                        mobileMenuOverlay.classList.remove('active');
                         document.body.style.overflow = '';
                     }
                 }
