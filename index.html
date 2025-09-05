@@ -138,90 +138,66 @@
         .logo-container {
             display: flex;
             align-items: center;
-            gap: 80px;
+            gap: 20px;
+            flex: 1;
         }
-        .logo-img {
-            margin-left: -200px; /* Смещаем только логотип влево */
-        }
-
+        
         .logo-img img {
             height: 60px;
             width: auto;
             transition: opacity 0.3s;
         }
 
-        /* Центральный блок с текстом и контактами */
-        .header-center {
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
-            text-align: center;
-        }
-
-        .logo-text {
-            font-weight: 600;
-            font-size: 20px;
-            line-height: 1.4;
-            color: var(--dark);
-            margin-bottom: 5px;
-            white-space: normal; /* Разрешить перенос строк */
-            text-align: center;
-            width: 500%;
-        }
-
-        .contact-line {
+        /* Контакты в шапке */
+        .header-contacts {
             display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 100px; /* Большой отступ между телефоном и Instagram */
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 5px;
         }
 
-        .contact-line a[href^="tel:"] {
+        .header-phone {
             font-weight: 700;
-            font-size: 22px;
+            font-size: 18px;
             text-decoration: none;
             color: var(--dark);
             white-space: nowrap;
-            margin-right: 100px; /* Большой отступ справа от телефона */
         }
 
-        .instagram-link {
+        .header-instagram {
             color: var(--primary);
             text-decoration: none;
             font-weight: 600;
             transition: var(--transition);
             white-space: nowrap;
-            margin-left: 100px; /* Большой отступ слева от Instagram */
+            font-size: 14px;
         }
 
-        .instagram-link:hover {
+        .header-instagram:hover {
             color: var(--accent);
         }
 
-        .instagram-link::before {
+        .header-instagram::before {
             content: '📸';
             margin-right: 5px;
         }
 
-        /* Навигация - смещена максимально вправо */
+        /* Навигация */
         .nav-desktop {
             display: flex;
-            gap: 30px;
-            position: absolute;
-            right: -300px; /* Сильное смещение вправо */
-            top: 40%;
-            transform: translateY(-50%);
+            gap: 20px;
+            align-items: center;
         }
 
         .highlighted {
-            background: linear-gradient(135deg, #3A9DBF);
+            background: var(--primary);
             color: white;
-            padding: 4px 10px;
+            padding: 8px 15px;
             border-radius: 15px;
             white-space: nowrap;
             display: inline-block;
             font-weight: 700;
-            font-size: 16px;
+            font-size: 14px;
             box-shadow: 0 3px 6px rgba(0,0,0,0.1);
             transition: all 0.3s ease;
         }
@@ -229,6 +205,7 @@
         .highlighted:hover {
             transform: translateY(-2px);
             box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+            background: var(--accent);
         }
 
         .nav-desktop a {
@@ -238,6 +215,7 @@
             transition: var(--transition);
             position: relative;
             font-family: 'Montserrat', sans-serif;
+            font-size: 14px;
         }
 
         .nav-desktop a:hover {
@@ -851,22 +829,15 @@
 
         /* Блок с акциями */
         .promo-section {
-            padding: 25px 0; /* Еще уменьшили отступы */
+            padding: 25px 0;
             background: var(--light);
-        }
-
-        /* Сильно уменьшенный основной заголовок */
-        .promo-section .section-title h2 {
-            font-size: 1.3rem; /* Еще уменьшили размер */
-            margin-bottom: 15px; /* Уменьшили отступ */
-            font-weight: 500; /* Сделали менее жирным */
         }
 
         .promo-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 15px;
-            margin-top: 15px; /* Уменьшили отступ */
+            margin-top: 15px;
         }
 
         .promo-card {
@@ -916,15 +887,6 @@
             flex-grow: 1;
         }
 
-        .promo-card .promo-price {
-            display: block;
-            text-align: center;
-            font-size: 1.3rem;
-            font-weight: bold;
-            color: var(--primary);
-            margin: 8px 0;
-        }
-
         .promo-card .btn {
             width: 100%;
             margin-top: 8px;
@@ -932,6 +894,7 @@
             font-size: 13px;
             border-radius: 25px;
         }
+        
         .promo-image {
             width: 60px;
             height: 60px;
@@ -1035,46 +998,22 @@
             visibility: visible;
         }
 
-        /* Контакты в мобильной версии */
-        .mobile-contacts {
-            display: none;
-            flex-direction: column;
-            align-items: center;
-            gap: 10px;
-            margin-top: 15px;
-        }
-
-        .mobile-contacts a {
-            font-weight: 600;
-            text-decoration: none;
-            color: var(--dark);
-        }
-
-        .mobile-contacts .instagram-link {
-            color: var(--primary);
-        }
-
         /* ========== АДАПТИВНОСТЬ ========== */
         @media (max-width: 1200px) {
-            .logo-img {
-                margin-left: 0;
-            }
-            
             .nav-desktop {
-                right: 0;
-                gap: 20px;
+                gap: 15px;
             }
             
-            .contact-line {
-                gap: 50px;
+            .header-contacts {
+                align-items: center;
             }
             
-            .contact-line a[href^="tel:"] {
-                margin-right: 50px;
+            .header-phone {
+                font-size: 16px;
             }
             
-            .instagram-link {
-                margin-left: 50px;
+            .header-instagram {
+                font-size: 13px;
             }
         }
 
@@ -1099,24 +1038,8 @@
                 font-size: 2.5rem;
             }
             
-            .logo-text {
-                font-size: 16px;
-                width: auto;
-            }
-            
-            .contact-line {
-                flex-direction: column;
-                gap: 10px;
-            }
-            
-            .contact-line a[href^="tel:"] {
-                margin-right: 0;
-                font-size: 18px;
-            }
-            
-            .instagram-link {
-                margin-left: 0;
-                font-size: 14px;
+            .header-contacts {
+                display: none;
             }
         }
 
@@ -1129,30 +1052,6 @@
             /* Показываем бургер меню */
             .burger-menu {
                 display: block;
-            }
-            
-            /* Центрируем контент в шапке */
-            .header-container {
-                justify-content: space-between;
-            }
-            
-            .logo-container {
-                gap: 20px;
-                width: 100%;
-                justify-content: space-between;
-            }
-            
-            .logo-img img {
-                height: 50px;
-            }
-            
-            .logo-text {
-                display: none;
-            }
-            
-            /* Показываем контакты в мобильной версии */
-            .mobile-contacts {
-                display: flex;
             }
             
             /* Главный экран */
@@ -1238,6 +1137,27 @@
             .promo-grid {
                 grid-template-columns: 1fr;
             }
+            
+            /* Показываем контакты в мобильном меню */
+            .mobile-contacts {
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+                margin-top: 20px;
+                padding-top: 20px;
+                border-top: 1px solid #eee;
+            }
+            
+            .mobile-contacts a {
+                font-weight: 600;
+                text-decoration: none;
+                color: var(--dark);
+                padding: 8px 0;
+            }
+            
+            .mobile-contacts .header-instagram {
+                color: var(--primary);
+            }
         }
 
         @media (max-width: 480px) {
@@ -1285,6 +1205,10 @@
                 right: 20px;
                 font-size: 20px;
             }
+            
+            .logo-img img {
+                height: 50px;
+            }
         }
 
         @media (max-width: 360px) {
@@ -1310,23 +1234,23 @@
                 <div class="logo-img">
                     <img src="images/logo-balkonomania.png" alt="Balkonomania">
                 </div>
-                <div class="logo-text">
-                    Ремонт и отделка балконов в Минске — профессиональное преобразование вашего пространства
-                    <div class="mobile-contacts">
-                        <a href="tel:+375291214229">+375 29 121 42 29</a>
-                        <a href="https://instagram.com/balkonomaniya.minsk" target="_blank" class="instagram-link" rel="noopener noreferrer">
-                            Наш Instagram
-                        </a>
-                    </div>
+                
+                <div class="header-contacts">
+                    <a href="tel:+375291214229" class="header-phone">+375 29 121 42 29</a>
+                    <a href="https://instagram.com/balkonomaniya.minsk" target="_blank" class="header-instagram" rel="noopener noreferrer">
+                        Наш Instagram
+                    </a>
                 </div>
-                <nav class="nav-desktop">
-                    <a href="#services" class="highlighted">Услуги</a>
-                    <a href="#portfolio" class="highlighted">Работы</a>
-                    <a href="#advantages" class="highlighted">Преимущества</a>
-                    <a href="#about" class="highlighted">О нас</a>
-                </nav>
-                <div class="burger-menu">☰</div>
             </div>
+            
+            <nav class="nav-desktop">
+                <a href="#services" class="highlighted">Услуги</a>
+                <a href="#portfolio" class="highlighted">Работы</a>
+                <a href="#advantages" class="highlighted">Преимущества</a>
+                <a href="#about" class="highlighted">О нас</a>
+            </nav>
+            
+            <div class="burger-menu">☰</div>
         </div>
     </header>
 
@@ -1338,9 +1262,9 @@
         <a href="#advantages" class="highlighted">Преимущества</a>
         <a href="#about" class="highlighted">О нас</a>
         
-        <div class="contact-info-mobile">
-            <a href="tel:+375291214229">+375 29 121 42 29</a>
-            <a href="https://instagram.com/balkonomaniya.minsk" target="_blank" class="instagram-link" rel="noopener noreferrer">
+        <div class="mobile-contacts">
+            <a href="tel:+375291214229" class="header-phone">+375 29 121 42 29</a>
+            <a href="https://instagram.com/balkonomaniya.minsk" target="_blank" class="header-instagram" rel="noopener noreferrer">
                 Наш Instagram
             </a>
         </div>
@@ -1388,11 +1312,12 @@
     <section class="hero">
         <div class="container hero-content">
             <h1>Профессиональная отделка и остекление балконов в Минске</h1>
-            <p>Всего 2-4 рабочих дня на обшивку балкона — и ваш балкон станет уютным продолжением комнаты! Работаем быстро, качественно и с гарантией 24 месяца</p>
+            <p>Всего 2-4 рабочих дня на обшивку балкона — и ваш балкон станет уютным продолжением комната! Работаем быстро, качественно и с гарантией 24 месяца</p>
             <button class="btn hero-btn" id="orderBtn">Бесплатный замер</button>
         </div>
     </section>
 
+    <!-- Остальной код остается без изменений -->
     <!-- Преимущества -->
     <section class="section advantages" id="advantages">
         <div class="container">
@@ -1417,7 +1342,7 @@
                 <div class="advantage-item">
                     <div class="advantage-icon">👨‍🔧</div>
                     <h3>Опытные мастера</h3>
-                    <p>Квалифицированные специалисты с многолетним опытом. Знаем все особенности разных типов балконов.</p>
+                    <p>Квалифицированные специалисты с многолетным опытом. Знаем все особенности разных типов балконов.</p>
                 </div>
                 
                 <div class="advantage-item">
@@ -1464,7 +1389,7 @@
             <div class="services-grid">
                 <div class="service-item">
                     <h3>Остекление балконов</h3>
-                    <p>Установка современных ПВХ и алюминиевых конструкций. Тёплое и холодное остекление.</p>
+                    <p>Установка современных ПВХ и алюминиевых конструкций. Тёплое и холоде остекление.</p>
                 </div>
                 
                 <div class="service-item">
