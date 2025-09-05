@@ -1022,6 +1022,32 @@
             text-decoration: none;
         }
 
+        /* Крестик закрытия мобильного меню */
+        .mobile-menu-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 28px;
+            cursor: pointer;
+            color: var(--dark);
+            background: none;
+            border: none;
+            transition: var(--transition);
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            z-index: 1002;
+        }
+
+        .mobile-menu-close:hover {
+            color: var(--danger);
+            background: rgba(0, 0, 0, 0.05);
+            transform: rotate(90deg);
+        }
+
         /* Мобильная версия */
         @media (max-width: 1200px) {
             .logo-img {
@@ -1248,6 +1274,17 @@
                 max-width: 80%;
                 height: auto;
             }
+            
+            .mobile-menu {
+                width: 85%;
+                padding: 70px 20px 20px;
+            }
+            
+            .mobile-menu-close {
+                top: 15px;
+                right: 15px;
+                font-size: 24px;
+            }
         }
 
         /* Адаптивность для мобильных устройств */
@@ -1331,6 +1368,7 @@
     <!-- Мобильное меню -->
     <div class="mobile-menu-overlay" id="mobileMenuOverlay"></div>
     <div class="mobile-menu" id="mobileMenu">
+        <button class="mobile-menu-close" id="mobileMenuClose">✕</button>
         <a href="#services" class="highlighted">Услуги</a>
         <a href="#portfolio" class="highlighted">Работы</a>
         <a href="#advantages" class="highlighted">Преимущества</a>
@@ -1471,7 +1509,7 @@
                 </div>
                 
                 <div class="service-item">
-                    <h3>Отделка панелями ПВХ и МДФ</h3>
+                    <h3>Отделка панелями ПVХ и МДФ</h3>
                     <p>Современные влагостойкие материалы с разнообразными текстурными решениями. Долговечность и эстетичный внешний вид.</p>
                 </div>
                 
@@ -1496,7 +1534,7 @@
                 </div>
                 
                 <div class="service-item">
-                    <h3>Объединение с комната</h3>
+                    <h3>Объединение с комнатой</h3>
                     <p>Качественное объединение балкона с жилым пространством. Увеличение полезной площади и создание единого интерьера.</p>
                 </div>
             </div>
@@ -1597,14 +1635,23 @@
             const burgerMenu = document.querySelector('.burger-menu');
             const mobileMenu = document.getElementById('mobileMenu');
             const mobileMenuOverlay = document.getElementById('mobileMenuOverlay');
+            const mobileMenuClose = document.getElementById('mobileMenuClose');
             
-            burgerMenu.addEventListener('click', function() {
+            function toggleMobileMenu() {
                 mobileMenu.classList.toggle('active');
                 mobileMenuOverlay.classList.toggle('active');
                 document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
-            });
+            }
+            
+            burgerMenu.addEventListener('click', toggleMobileMenu);
             
             mobileMenuOverlay.addEventListener('click', function() {
+                mobileMenu.classList.remove('active');
+                mobileMenuOverlay.classList.remove('active');
+                document.body.style.overflow = '';
+            });
+            
+            mobileMenuClose.addEventListener('click', function() {
                 mobileMenu.classList.remove('active');
                 mobileMenuOverlay.classList.remove('active');
                 document.body.style.overflow = '';
