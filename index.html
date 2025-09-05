@@ -116,7 +116,7 @@
             color: var(--text);
         }
 
-        /* Шапка */
+        /* Шапка - переработана для мобильных */
         header {
             background: rgba(255, 255, 255, 0.95);
             padding: 15px 0;
@@ -132,173 +132,72 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            position: relative;
         }
 
         .logo-container {
             display: flex;
             align-items: center;
-            gap: 80px;
+            gap: 15px;
         }
         
-        .logo-img {
-            margin-left: -200px;
-        }
-
         .logo-img img {
-            height: 60px;
+            height: 50px;
             width: auto;
             transition: opacity 0.3s;
         }
 
-        /* Центральный блок с текстом и контактами */
-        .header-center {
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
-            text-align: center;
-        }
-
         .logo-text {
             font-weight: 600;
-            font-size: 20px;
-            line-height: 1.4;
+            font-size: 14px;
+            line-height: 1.3;
             color: var(--dark);
-            margin-bottom: 5px;
-            white-space: normal;
-            text-align: center;
-            width: 500%;
+            display: none; /* Скрываем на мобильных */
         }
 
-        .contact-line {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 100px;
-        }
-
-        .contact-line a[href^="tel:"] {
-            font-weight: 700;
-            font-size: 22px;
-            text-decoration: none;
-            color: var(--dark);
-            white-space: nowrap;
-            margin-right: 100px;
-        }
-
-        .instagram-link {
-            color: var(--primary);
-            text-decoration: none;
-            font-weight: 600;
-            transition: var(--transition);
-            white-space: nowrap;
-            margin-left: 100px;
-        }
-
-        .instagram-link:hover {
-            color: var(--accent);
-        }
-
-        .instagram-link::before {
-            content: '📸';
-            margin-right: 5px;
-        }
-
-        /* Навигация - смещена максимально вправо */
         .nav-desktop {
-            display: flex;
-            gap: 30px;
-            position: absolute;
-            right: -300px;
-            top: 40%;
-            transform: translateY(-50%);
-        }
-
-        .highlighted {
-            background: linear-gradient(135deg, #3A9DBF);
-            color: white;
-            padding: 4px 10px;
-            border-radius: 15px;
-            white-space: nowrap;
-            display: inline-block;
-            font-weight: 700;
-            font-size: 16px;
-            box-shadow: 0 3px 6px rgba(0,0,0,0.1);
-            transition: all 0.3s ease;
-        }
-
-        .highlighted:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 10px rgba(0,0,0,0.2);
-        }
-
-        .nav-desktop a {
-            text-decoration: none;
-            color: var(--dark);
-            font-weight: 600;
-            transition: var(--transition);
-            position: relative;
-            font-family: 'Montserrat', sans-serif;
-        }
-
-        .nav-desktop a:hover {
-            color: var(--primary);
-        }
-
-        .nav-desktop a::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--primary);
-            transition: width 0.3s;
-        }
-
-        .nav-desktop a:hover::after {
-            width: 100%;
+            display: none; /* Скрываем на мобильных */
         }
 
         .burger-menu {
-            display: none;
+            display: block;
             cursor: pointer;
             font-size: 24px;
             color: var(--dark);
+            z-index: 1001;
         }
         
         /* Главный экран */
         .hero {
             height: 100vh;
-            min-height: 700px;
+            min-height: 600px;
             background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), 
                         url('https://images.unsplash.com/photo-1595526114035-0d45ed16cfbf?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') no-repeat center/cover;
             display: flex;
             align-items: center;
-            margin-top: 90px;
-            text-align: left;
-            position: relative;
-            padding-left: 5%;
+            margin-top: 80px;
+            text-align: center;
             color: white;
+            padding: 0 20px;
         }
         
         .hero-content {
             width: 100%;
             animation: fadeIn 1s ease-out;
             max-width: 650px;
+            margin: 0 auto;
         }
         
         .hero h1 {
-            font-size: 3.2rem;
-            margin-bottom: 25px;
+            font-size: 2.2rem;
+            margin-bottom: 20px;
             color: white;
             text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
             line-height: 1.2;
         }
         
         .hero p {
-            font-size: 1.3rem;
-            margin: 0 0 40px 0;
+            font-size: 1.1rem;
+            margin: 0 0 30px 0;
             font-weight: 500;
             line-height: 1.6;
             text-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
@@ -306,8 +205,8 @@
         
         .hero-btn {
             background: var(--secondary);
-            padding: 18px 40px;
-            font-size: 18px;
+            padding: 16px 35px;
+            font-size: 16px;
             font-weight: 700;
         }
         
@@ -326,16 +225,16 @@
         /* Плавающая кнопка */
         .floating-btn {
             position: fixed;
-            left: 30px;
-            bottom: 30px;
+            left: 20px;
+            bottom: 20px;
             z-index: 998;
-            padding: 20px 40px;
+            padding: 15px 25px;
             background: var(--secondary);
             color: var(--dark);
             border-radius: 50px;
             text-decoration: none;
             font-weight: bold;
-            font-size: 18px;
+            font-size: 16px;
             transition: var(--transition);
             border: none;
             cursor: pointer;
@@ -361,13 +260,13 @@
         
         .advantages-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
+            grid-template-columns: 1fr;
+            gap: 20px;
         }
         
         .advantage-item {
             background: white;
-            padding: 30px;
+            padding: 25px;
             border-radius: 15px;
             box-shadow: var(--shadow);
             transition: var(--transition);
@@ -388,7 +287,7 @@
         }
         
         .advantage-item:hover {
-            transform: translateY(-10px);
+            transform: translateY(-5px);
         }
         
         .advantage-item:hover::before {
@@ -397,13 +296,13 @@
         }
         
         .advantage-icon {
-            font-size: 50px;
-            margin-bottom: 20px;
+            font-size: 40px;
+            margin-bottom: 15px;
             color: var(--primary);
         }
         
         .advantage-item h3 {
-            font-size: 1.4rem;
+            font-size: 1.3rem;
             margin-bottom: 15px;
             position: relative;
             padding-bottom: 15px;
@@ -433,13 +332,13 @@
         
         .services-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 30px;
+            grid-template-columns: 1fr;
+            gap: 20px;
         }
         
         .service-item {
             background: var(--light);
-            padding: 30px;
+            padding: 25px;
             border-radius: 15px;
             transition: var(--transition);
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
@@ -457,7 +356,7 @@
             color: var(--primary);
             position: relative;
             padding-bottom: 15px;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
         }
 
         .service-item h3::after {
@@ -483,12 +382,12 @@
 
         .gallery {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 15px;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
         }
 
         .gallery-item {
-            height: 200px;
+            height: 150px;
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
@@ -515,8 +414,6 @@
 
         .gallery-item:hover {
             transform: scale(1.03);
-            box-shadow: var(--shadow);
-            will-change: transform;
         }
 
         .gallery-item:hover::before {
@@ -565,16 +462,16 @@
 
         .modal-gallery-close {
             position: absolute;
-            top: -50px;
-            right: -50px;
+            top: 10px;
+            right: 10px;
             color: white;
-            font-size: 40px;
+            font-size: 30px;
             cursor: pointer;
             background: none;
             border: none;
             z-index: 10001;
-            width: 50px;
-            height: 50px;
+            width: 40px;
+            height: 40px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -588,7 +485,7 @@
             display: flex;
             justify-content: space-between;
             transform: translateY(-50%);
-            padding: 0 30px;
+            padding: 0 10px;
             pointer-events: none;
         }
 
@@ -597,9 +494,9 @@
             background: rgba(255, 255, 255, 0.2);
             border: none;
             color: white;
-            padding: 20px;
+            padding: 15px;
             cursor: pointer;
-            font-size: 24px;
+            font-size: 20px;
             border-radius: 50%;
             pointer-events: all;
             transition: background 0.3s ease;
@@ -617,14 +514,14 @@
         
         .about-container {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 50px;
+            grid-template-columns: 1fr;
+            gap: 40px;
             align-items: center;
         }
         
         .about-text {
             background: var(--light);
-            padding: 40px;
+            padding: 30px;
             border-radius: 15px;
             box-shadow: var(--shadow);
         }
@@ -632,7 +529,7 @@
         .about-image {
             border-radius: 15px;
             overflow: hidden;
-            height: 500px;
+            height: 300px;
             background: url('https://images.unsplash.com/photo-1582407947304-fd86f028f716?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80') no-repeat center/cover;
             box-shadow: var(--shadow);
             transition: var(--transition);
@@ -651,7 +548,7 @@
         
         /* Футер */
         footer {
-            padding: 50px 0 30px;
+            padding: 40px 0 20px;
             background: var(--dark);
             color: white;
             text-align: center;
@@ -660,7 +557,7 @@
         .footer-container {
             display: flex;
             flex-direction: column;
-            gap: 20px;
+            gap: 15px;
         }
         
         .footer-copyright {
@@ -671,18 +568,18 @@
         /* Кнопка "Наверх" */
         .back-to-top {
             position: fixed;
-            bottom: 30px;
-            right: 30px;
+            bottom: 80px;
+            right: 20px;
             background: var(--primary);
             color: white;
-            width: 60px;
-            height: 60px;
+            width: 50px;
+            height: 50px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             text-decoration: none;
-            font-size: 24px;
+            font-size: 20px;
             box-shadow: var(--shadow);
             opacity: 0;
             visibility: hidden;
@@ -725,7 +622,7 @@
         
         .modal {
             background: white;
-            padding: 40px;
+            padding: 30px 20px;
             border-radius: 15px;
             width: 90%;
             max-width: 500px;
@@ -743,7 +640,7 @@
             position: absolute;
             top: 15px;
             right: 15px;
-            font-size: 28px;
+            font-size: 24px;
             cursor: pointer;
             color: var(--text);
             background: none;
@@ -757,8 +654,8 @@
         }
         
         .modal-title {
-            font-size: 1.8rem;
-            margin-bottom: 25px;
+            font-size: 1.5rem;
+            margin-bottom: 20px;
             color: var(--dark);
             text-align: center;
             position: relative;
@@ -771,7 +668,7 @@
             bottom: 0;
             left: 50%;
             transform: translateX(-50%);
-            width: 80px;
+            width: 60px;
             height: 3px;
             background: var(--secondary);
             border-radius: 3px;
@@ -780,7 +677,7 @@
         .modal-form {
             display: flex;
             flex-direction: column;
-            gap: 20px;
+            gap: 15px;
         }
         
         .form-group {
@@ -796,7 +693,7 @@
         
         .form-group input, 
         .form-group textarea {
-            padding: 15px 20px;
+            padding: 12px 15px;
             border: 1px solid var(--gray);
             border-radius: 8px;
             font-size: 16px;
@@ -812,7 +709,7 @@
         }
         
         .form-group textarea {
-            min-height: 120px;
+            min-height: 100px;
             resize: vertical;
         }
         
@@ -820,7 +717,7 @@
             background: var(--primary);
             color: white;
             border: none;
-            padding: 16px 25px;
+            padding: 14px 20px;
             border-radius: 8px;
             font-weight: bold;
             font-size: 16px;
@@ -846,20 +743,20 @@
         /* Акция */
         .promo-banner {
             background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
-            padding: 20px 0;
+            padding: 15px 0;
             text-align: center;
             color: white;
             font-weight: bold;
-            font-size: 1.3rem;
+            font-size: 1.1rem;
             position: relative;
             z-index: 900;
-            margin-top: 90px;
+            margin-top: 80px; /* Учитываем высоту шапки */
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
         }
 
         /* Блок с акциями */
         .promo-section {
-            padding: 25px 0;
+            padding: 20px 0;
             background: var(--light);
         }
 
@@ -871,21 +768,21 @@
 
         .promo-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: 1fr;
             gap: 15px;
             margin-top: 15px;
         }
 
         .promo-card {
             background: white;
-            border-radius: 15px;
+            border-radius: 12px;
             padding: 15px;
             box-shadow: var(--shadow);
             transition: var(--transition);
             position: relative;
             overflow: hidden;
             border: 2px solid var(--secondary);
-            min-height: 220px;
+            min-height: 200px;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
@@ -926,7 +823,7 @@
         .promo-card .promo-price {
             display: block;
             text-align: center;
-            font-size: 1.3rem;
+            font-size: 1.2rem;
             font-weight: bold;
             color: var(--primary);
             margin: 8px 0;
@@ -1000,13 +897,13 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 25px;
+            gap: 20px;
         }
 
         .mobile-nav a {
             text-decoration: none;
             color: var(--dark);
-            font-size: 1.5rem;
+            font-size: 1.3rem;
             font-weight: 600;
             font-family: 'Montserrat', sans-serif;
             transition: var(--transition);
@@ -1017,216 +914,121 @@
         }
 
         .mobile-contact {
-            margin-top: 40px;
+            margin-top: 30px;
             text-align: center;
         }
 
         .mobile-contact a {
             display: block;
             margin-bottom: 15px;
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             color: var(--primary);
             text-decoration: none;
             font-weight: 600;
         }
 
-        /* Мобильная версия */
-        @media (max-width: 1200px) {
-            .logo-img {
-                margin-left: 0;
-            }
-            
+        /* Адаптивность для планшетов и десктопов */
+        @media (min-width: 768px) {
             .logo-text {
-                width: auto;
-                font-size: 18px;
-            }
-            
-            .contact-line {
-                gap: 30px;
-            }
-            
-            .contact-line a[href^="tel:"] {
-                margin-right: 30px;
-                font-size: 18px;
-            }
-            
-            .instagram-link {
-                margin-left: 30px;
-            }
-        }
-
-        @media (max-width: 992px) {
-            .header-container {
-                flex-wrap: wrap;
-            }
-            
-            .logo-container {
-                width: 100%;
-                justify-content: space-between;
-                gap: 20px;
-            }
-            
-            .logo-img {
-                flex-shrink: 0;
-            }
-            
-            .logo-text {
-                flex-grow: 1;
-                text-align: center;
-                font-size: 16px;
-            }
-            
-            .nav-desktop {
-                display: none;
-            }
-            
-            .burger-menu {
                 display: block;
-                flex-shrink: 0;
-            }
-            
-            .contact-line {
-                display: none;
-            }
-            
-            .about-container {
-                grid-template-columns: 1fr;
-            }
-            
-            .about-image {
-                order: -1;
-                height: 400px;
-            }
-            
-            .floating-btn {
-                left: 15px;
-                bottom: 15px;
-                padding: 15px 30px;
                 font-size: 16px;
             }
             
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-            
-            .section {
-                padding: 70px 0;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .hero {
-                text-align: center;
-                padding: 0 20px;
-                margin-top: 70px;
-                min-height: 600px;
-            }
-            
-            .hero h1 {
-                font-size: 2rem;
-            }
-            
-            .hero p {
-                font-size: 1.1rem;
-            }
-            
-            .section-title h2 {
-                font-size: 2rem;
-            }
-            
-            .modal {
-                padding: 30px 20px;
-            }
-            
-            .services-grid,
-            .advantages-grid {
-                grid-template-columns: 1fr;
-                gap: 20px;
-            }
-            
-            .advantage-item,
-            .service-item {
-                padding: 20px;
-            }
-            
-            .gallery {
+            .advantages-grid,
+            .services-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
             
+            .gallery {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            
+            .about-container {
+                grid-template-columns: 1fr 1fr;
+            }
+            
+            .about-image {
+                height: 400px;
+            }
+            
+            .hero {
+                text-align: left;
+                padding-left: 5%;
+                margin-top: 90px;
+            }
+            
+            .hero-content {
+                margin: 0;
+            }
+            
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+            
+            .hero p {
+                font-size: 1.2rem;
+            }
+            
             .promo-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .promo-banner {
-                font-size: 1.1rem;
-                padding: 15px 0;
-                margin-top: 70px;
-            }
-            
-            .back-to-top {
-                bottom: 20px;
-                right: 20px;
-                width: 50px;
-                height: 50px;
-                font-size: 20px;
+                grid-template-columns: repeat(2, 1fr);
             }
         }
 
-        @media (max-width: 576px) {
-            .hero h1 {
-                font-size: 1.8rem;
+        @media (min-width: 992px) {
+            .nav-desktop {
+                display: flex;
+                gap: 20px;
             }
             
-            .hero-btn {
-                padding: 15px 30px;
-                font-size: 16px;
+            .burger-menu {
+                display: none;
             }
             
-            .logo-img img {
-                height: 50px;
+            .advantages-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+            
+            .services-grid {
+                grid-template-columns: repeat(2, 1fr);
             }
             
             .logo-text {
-                font-size: 14px;
-            }
-            
-            .gallery {
-                grid-template-columns: 1fr;
-            }
-            
-            .gallery-item {
-                height: 180px;
-            }
-            
-            .modal-gallery-close {
-                top: 10px;
-                right: 10px;
-                font-size: 30px;
-            }
-            
-            .modal-gallery-nav {
-                padding: 0 10px;
-            }
-            
-            .modal-gallery-prev,
-            .modal-gallery-next {
-                padding: 12px;
                 font-size: 18px;
             }
             
-            .floating-btn {
-                left: 10px;
-                bottom: 10px;
-                padding: 12px 20px;
-                font-size: 14px;
+            .logo-img img {
+                height: 60px;
             }
             
-            .section-title h2 {
-                font-size: 1.8rem;
+            .promo-grid {
+                grid-template-columns: repeat(4, 1fr);
             }
             
-            .section-descr {
-                font-size: 1rem;
+            .header-container {
+                justify-content: space-between;
+            }
+            
+            .logo-container {
+                gap: 30px;
+            }
+        }
+
+        @media (min-width: 1200px) {
+            .advantages-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+            
+            .services-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+            
+            .gallery {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 15px;
+            }
+            
+            .gallery-item {
+                height: 200px;
             }
         }
     </style>
@@ -1240,28 +1042,28 @@
                     <img src="images/logo-balkonomania.png" alt="Balkonomania">
                 </div>
                 <div class="logo-text">
-                    Ремонт и отделка балконов в Минске — профессиональное преобразование вашего пространства
-                    <div class="contact-info">
-                        <a href="tel:+375291214229">+375 29 121 42 29</a>
-                        <a href="https://instagram.com/balkonomaniya.minsk" target="_blank" class="instagram-link" rel="noopener noreferrer">
-                            Наш Instagram
-                        </a>
-                    </div>
+                    Ремонт и отделка балконов в Минске
                 </div>
-                <nav class="nav-desktop">
-                    <a href="#services" class="highlighted">Услуги</a>
-                    <a href="#portfolio" class="highlighted">Работы</a>
-                    <a href="#advantages" class="highlighted">Преимущества</a>
-                    <a href="#about" class="highlighted">О нас</a>
-                </nav>
-                <div class="burger-menu" id="burgerMenu">☰</div>
+            </div>
+            
+            <nav class="nav-desktop">
+                <a href="#services">Услуги</a>
+                <a href="#portfolio">Работы</a>
+                <a href="#advantages">Преимущества</a>
+                <a href="#about">О нас</a>
+            </nav>
+            
+            <div class="burger-menu" id="burgerMenu">
+                <i class="fas fa-bars"></i>
             </div>
         </div>
     </header>
 
     <!-- Мобильное меню -->
     <div class="mobile-menu" id="mobileMenu">
-        <button class="mobile-menu-close" id="mobileMenuClose">✕</button>
+        <button class="mobile-menu-close" id="mobileMenuClose">
+            <i class="fas fa-times"></i>
+        </button>
         <nav class="mobile-nav">
             <a href="#services" onclick="closeMobileMenu()">Услуги</a>
             <a href="#portfolio" onclick="closeMobileMenu()">Работы</a>
@@ -1269,8 +1071,12 @@
             <a href="#about" onclick="closeMobileMenu()">О нас</a>
         </nav>
         <div class="mobile-contact">
-            <a href="tel:+375291214229">+375 29 121 42 29</a>
-            <a href="https://instagram.com/balkonomaniya.minsk" target="_blank" rel="noopener noreferrer">Instagram</a>
+            <a href="tel:+375291214229">
+                <i class="fas fa-phone"></i> +375 29 121 42 29
+            </a>
+            <a href="https://instagram.com/balkonomaniya.minsk" target="_blank" rel="noopener noreferrer">
+                <i class="fab fa-instagram"></i> Наш Instagram
+            </a>
         </div>
     </div>
 
@@ -1353,30 +1159,6 @@
                     <h3>Качественные материалы</h3>
                     <p>Работаем с проверенными производителями. Используем сертифицированные материалы с гарантией долговечности.</p>
                 </div>
-                
-                <div class="advantage-item">
-                    <div class="advantage-icon">📅</div>
-                    <h3>Рассрочка 0%</h3>
-                    <p>Собственная программа рассрочки без переплат. Оформление за один день без справок и поручителей.</p>
-                </div>
-                
-                <div class="advantage-item">
-                    <div class="advantage-icon">⚡</div>
-                    <h3>Сроки от 2 дней</h3>
-                    <p>Полный цикл работ по обшивке балкона за 2-4 дня. Слаженная работа бригады без простоев и задержек.</p>
-                </div>
-                
-                <div class="advantage-item">
-                    <div class="advantage-icon">🛡️</div>
-                    <h3>Гuarantee 24 месяца</h3>
-                    <p>Официальная гарантия на все виды работ. Бесплатное устранение любых недостатков в течение 2 лет.</p>
-                </div>
-                
-                <div class="advantage-item">
-                    <div class="advantage-icon">🏆</div>
-                    <h3>Индивидуальный подход</h3>
-                    <p>Учитываем все ваши пожелания. Реализуем задуманное, чтобы интерьер стал идеальным для вас.</p>
-                </div>
             </div>
         </div>
     </section>
@@ -1409,26 +1191,6 @@
                     <h3>Отделка ламинатом</h3>
                     <p>Создание стильного и прочного покрытия для стен и пола. Широкий выбор дизайнов и фактур под любой интерьер.</p>
                 </div>
-                
-                <div class="service-item">
-                    <h3>Изготовление мебели</h3>
-                    <p>Встроенные шкафы, полки и стеллажи для максимального использования пространства. Функциональность и эргономика.</p>
-                </div>
-                
-                <div class="service-item">
-                    <h3>Электромонтажные работы</h3>
-                    <p>Подключение розеток, освещения, тёплых полов. Гарантия надёжности и долговечности.</p>
-                </div>
-                
-                <div class="service-item">
-                    <h3>Наружная отделка</h3>
-                    <p>Обшивка парапета с внешной стороны сайдингом. Защита от воздействия окружающей среды и улучшение внешнего вида.</p>
-                </div>
-                
-                <div class="service-item">
-                    <h3>Объединение с комнатой</h3>
-                    <p>Качественное объединение балкона с жилым пространством. Увеличение полезной площади и создание единого интерьера.</p>
-                </div>
             </div>
         </div>
     </section>
@@ -1442,13 +1204,12 @@
             </div>
             
             <div class="gallery">
-                <!-- 6 элементов по 3 в строку -->
-                <div class="gallery-item" style="background-image: url('photo/7 -1.jpg');" data-full="photo/7.jpg"></div>
-                <div class="gallery-item" style="background-image: url('photo/1-1.jpg');" data-full="photo/1.jpg"></div>
-                <div class="gallery-item" style="background-image: url('photo/2-2.png');" data-full="photo/2.jpg"></div>
-                <div class="gallery-item" style="background-image: url('photo/3-2.png');" data-full="photo/3-2-2.png"></div>
-                <div class="gallery-item" style="background-image: url('photo/4-1.jpg');" data-full="photo/4.jpg"></div>
-                <div class="gallery-item" style="background-image: url('photo/4-4.jpg');" data-full="photo/4-44.jpg"></div>
+                <div class="gallery-item" style="background-image: url('https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80');" data-full="https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80"></div>
+                <div class="gallery-item" style="background-image: url('https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80');" data-full="https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80"></div>
+                <div class="gallery-item" style="background-image: url('https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80');" data-full="https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80"></div>
+                <div class="gallery-item" style="background-image: url('https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80');" data-full="https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80"></div>
+                <div class="gallery-item" style="background-image: url('https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80');" data-full="https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80"></div>
+                <div class="gallery-item" style="background-image: url('https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80');" data-full="https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80"></div>
             </div>
         </div>
         
@@ -1473,9 +1234,6 @@
                 <div class="about-divider"></div>
                 <p>Мы специализируемся на профессиональном остеклении, утеплении и отделке балконов и лоджий в Минске. Более 10 лет создаём уютные и функциональные пространства, которые радуют наших клиентов долгие годы.</p>
                 <p>В своей работе мы используем только проверенные материалы от ведущих производителей и современные технологии монтажа. Это позволяет нам гарантировать высочайшее качество выполненных работ.</p>
-                <h3>Наш подход</h3>
-                <p>Мы предлагаем индивидуальные решения для каждого клиента, учитывая особенности помещения, ваши пожелания и бюджет. От первого замера до сдачи объекта — мы контролируем каждый этап работы.</p>
-                <p>Наши специалисты регулярно проходят обучение и повышают квалификацию, чтобы предлагать вам самые современные и эффективные решения для вашего балкона.</p>
             </div>
             <div class="about-image"></div>
         </div>
