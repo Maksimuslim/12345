@@ -859,22 +859,21 @@
 
         /* Блок с акциями */
         .promo-section {
-            padding: 25px 0; /* Еще уменьшили отступы */
+            padding: 25px 0;
             background: var(--light);
         }
 
-        /* Сильно уменьшенный основной заголовок */
         .promo-section .section-title h2 {
-            font-size: 1.3rem; /* Еще уменьшили размер */
-            margin-bottom: 15px; /* Уменьшили отступ */
-            font-weight: 500; /* Сделали менее жирным */
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            font-weight: 500;
         }
 
         .promo-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 15px;
-            margin-top: 15px; /* Уменьшили отступ */
+            margin-top: 15px;
         }
 
         .promo-card {
@@ -940,12 +939,13 @@
             font-size: 13px;
             border-radius: 25px;
         }
-        .promo-image {
-            width: 60px;
-            height: 60px;
+        
+        /* ВОЗВРАЩАЕМ СТАРЫЙ РАЗМЕР ИЗОБРАЖЕНИЙ */
+        .promo-card img {
+            max-width: 100%;
+            height: auto;
             margin: 10px auto;
             display: block;
-            object-fit: contain;
         }
 
         /* Загрузчик */
@@ -1242,6 +1242,12 @@
             .contact-line a[href^="tel:"] {
                 font-size: 14px;
             }
+            
+            /* Адаптация изображений в промо-карточках для мобильных */
+            .promo-card img {
+                max-width: 80%;
+                height: auto;
+            }
         }
 
         /* Адаптивность для мобильных устройств */
@@ -1352,25 +1358,25 @@
                 <div class="promo-card">
                     <h3>Подарок на выбор</h3>
                     <p>При заключении договора выберите в подарок потолочную, настенную или напольную сушилку.</p>
-                    <img src="images/tempsnip.png" alt="Balkonomania" class="promo-image">
+                    <img src="images/tempsnip.png" alt="Balkonomania">
                 </div>
                 
                 <div class="promo-card">
                     <h3>Подарок каждому клиенту при заказе комплексной обшивки.</h3>
                     <p>При заказе комплексной обшивки балкона (лоджии) шкафчик до подоконника из ДСП в подарок!.</p>
-                    <img src="images/1.jpg" alt="Balkonomania" class="promo-image">
+                    <img src="images/1.jpg" alt="Balkonomania">
                 </div>
                 
                 <div class="promo-card">
                     <h3>Приятный бонус!</h3>
                     <p>Приятный подарок от нас! Получите сертификат в строительный гипермаркет на 3% от суммы договора при заключении договора в день замера.</p>
-                    <img src="images/tempsnip2.png" alt="Balkonomania" class="promo-image">
+                    <img src="images/tempsnip2.png" alt="Balkonomania">
                 </div>
                 
                 <div class="promo-card">
                     <h3>Тепло и защита со скидкой 50%!</h3>
                     <p>Обшиваете балкон? Получите ИК тёплый пол и сетки от комаров за полцены!</p>
-                    <img src="images/tempsnip1.png" alt="Balkonomania" class="promo-image">
+                    <img src="images/tempsnip1.png" alt="Balkonomania">
                 </div>
             </div>
         </div>
@@ -1380,7 +1386,7 @@
     <section class="hero">
         <div class="container hero-content">
             <h1>Профессиональная отделка и остекление балконов в Минске</h1>
-            <p>Всего 2-4 рабочих дня на обшивку балкона — и ваш балкон станет уютным продолжением комнаты! Работаем быстро, качественно и с гарантией 24 месяца</p>
+            <p>Всего 2-4 рабочих дня на обшивку балкона — и ваш балкон станет уютным продолжением комната! Работаем быстро, качественно и с гарантией 24 месяца</p>
             <button class="btn hero-btn" id="orderBtn">Бесплатный замер</button>
         </div>
     </section>
@@ -1501,7 +1507,7 @@
     <section class="section portfolio" id="portfolio">
         <div class="container">
             <div class="section-title">
-                <h2>Наши работы</h2>
+                <h2>Наши работ</h2>
                 <p class="section-descr">Идеи, воплощенные в жизнь.</p>
             </div>
             
@@ -1624,7 +1630,7 @@
                 }
             });
             
-            backToTopBtn.addEventListener('click', (e) => {
+            backToTopBtn.addEventListener('click', (e) {
                 e.preventDefault();
                 window.scrollTo({ top: 0, behavior: 'smooth' });
             });
